@@ -16,20 +16,19 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author suporte
+ * @author alephtav
  */
 @Entity
-public class Produto implements Serializable {
-     @Id
+public class Cliente implements Serializable{
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idproduto;
-    private String produto;
-    private String descricao;
-    private Double valor;
-    private String tproducao;
-    
-    
-    @OneToMany(mappedBy = "produto")
+    private Long idcliente;
+    private String nome;
+    private String telefone;
+    private String cpf;
+    private String endereco;
+
+    @OneToMany(mappedBy = "cliente")
     private List<Encomenda> encomenda ;
 
     public List<Encomenda> getEncomenda() {
@@ -40,51 +39,50 @@ public class Produto implements Serializable {
         this.encomenda = encomenda;
     }
     
-    
-    public Long getIdproduto() {
-        return idproduto;
+    public Long getIdcliente() {
+        return idcliente;
     }
 
-    public void setIdproduto(Long idproduto) {
-        this.idproduto = idproduto;
+    public void setIdcliente(Long idcliente) {
+        this.idcliente = idcliente;
     }
 
-    public String getProduto() {
-        return produto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setProduto(String produto) {
-        this.produto = produto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public Double getValor() {
-        return valor;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getTproducao() {
-        return tproducao;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setTproducao(String tproducao) {
-        this.tproducao = tproducao;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.idproduto);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.idcliente);
         return hash;
     }
 
@@ -99,15 +97,16 @@ public class Produto implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Produto other = (Produto) obj;
-        if (!Objects.equals(this.idproduto, other.idproduto)) {
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.idcliente, other.idcliente)) {
             return false;
         }
         return true;
     }
 
-    public Produto() {
+    public Cliente() {
     }
+      
     
     
 }

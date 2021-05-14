@@ -6,6 +6,7 @@
 package br.com.ghms.baruk.site.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,49 +23,26 @@ import javax.persistence.ManyToOne;
 public class Encomenda implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idencomenda;
-    private String cliente;
-    private String telefone;
-    private String endereco;
+    private Long idencomenda;    
     private String entrega;
     private String status;
-   
+    private LocalDateTime data_solicitacao;
+    private LocalDateTime data_previsao;
     
     @ManyToOne
     @JoinColumn(name="idproduto")
     private Produto produto;
+    
+    @ManyToOne
+    @JoinColumn(name="idcliente")
+    private Cliente cliente;
 
-     
     public Long getIdencomenda() {
         return idencomenda;
     }
 
     public void setIdencomenda(Long idencomenda) {
         this.idencomenda = idencomenda;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public String getEntrega() {
@@ -83,13 +61,42 @@ public class Encomenda implements Serializable{
         this.status = status;
     }
 
-   
-    
+    public LocalDateTime getData_solicitacao() {
+        return data_solicitacao;
+    }
+
+    public void setData_solicitacao(LocalDateTime data_solicitacao) {
+        this.data_solicitacao = data_solicitacao;
+    }
+
+    public LocalDateTime getData_previsao() {
+        return data_previsao;
+    }
+
+    public void setData_previsao(LocalDateTime data_previsao) {
+        this.data_previsao = data_previsao;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.idencomenda);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.idencomenda);
         return hash;
     }
 
@@ -111,17 +118,8 @@ public class Encomenda implements Serializable{
         return true;
     }
 
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-    
-
     public Encomenda() {
     }
-
-}
+    
+        
+  }
