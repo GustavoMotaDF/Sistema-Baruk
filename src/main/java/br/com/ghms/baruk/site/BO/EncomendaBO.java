@@ -94,7 +94,7 @@ public class EncomendaBO {
         
         Encomenda encomenda = em.find(Encomenda.class, Long.valueOf(idencomenda));
         Produto produtos = em.find(Produto.class, Long.valueOf(idproduto)); 
-        Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));                 
+        Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));   
         encomenda.setCliente(cliente);        
         encomenda.setEntrega(entrega);
         encomenda.setStatus(status);       

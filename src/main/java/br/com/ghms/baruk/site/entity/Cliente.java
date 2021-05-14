@@ -6,6 +6,7 @@
 package br.com.ghms.baruk.site.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -27,7 +28,28 @@ public class Cliente implements Serializable{
     private String telefone;
     private String cpf;
     private String endereco;
+    private LocalDateTime data_cadastro;
+    private LocalDateTime data_atualizacao;
 
+    public LocalDateTime getData_atualizacao() {
+        return data_atualizacao;
+    }
+
+    public void setData_atualizacao(LocalDateTime data_atualizacao) {
+        this.data_atualizacao = data_atualizacao;
+    }
+
+    
+    public LocalDateTime getData_cadastro() {
+        return data_cadastro;
+    }
+
+    public void setData_cadastro(LocalDateTime data_cadastro) {
+        this.data_cadastro = data_cadastro;
+    }
+    
+    
+    
     @OneToMany(mappedBy = "cliente")
     private List<Encomenda> encomenda ;
 
