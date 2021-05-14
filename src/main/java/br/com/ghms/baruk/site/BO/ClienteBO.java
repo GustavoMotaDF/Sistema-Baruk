@@ -35,7 +35,7 @@ public class ClienteBO {
         
         return cliente;
     }
-      public void cadCliente (String nome, String telefone, String cpf, String endereco, String data_cadastro) throws Exception{ 
+      public void cadCliente (String nome, String telefone, String cpf, String endereco) throws Exception{ 
         EntityManager em = emf.createEntityManager();
         if(nome==null || nome.isEmpty() || nome.equals("") ){
             throw new Exception ("Não foi informado o NOME!");             
