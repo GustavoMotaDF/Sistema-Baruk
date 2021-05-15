@@ -8,6 +8,7 @@ package br.com.ghms.baruk.site.BO;
 import br.com.ghms.baruk.site.entity.Cliente;
 import br.com.ghms.baruk.site.entity.Encomenda;
 import br.com.ghms.baruk.site.entity.Produto;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -19,111 +20,120 @@ import javax.persistence.Persistence;
  * @author suporte
  */
 public class EncomendaBO {
+
     private static final EntityManagerFactory emf
             = Persistence.createEntityManagerFactory("barukup");
-    
-    public List<Encomenda> getEncomendas() throws Exception{
-        List<Encomenda>encomenda;
+
+    public List<Encomenda> getEncomendas() throws Exception {
+        List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         encomenda = em.createQuery("from Encomenda").getResultList();
         em.getTransaction().commit();
         em.clear();
         em.close();
-        
-        if(encomenda==null || encomenda.isEmpty() || encomenda.equals("") ){
-            throw new Exception("Sem Encomedas registradas!");            
+
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas registradas!");
         }
-        
+
         return encomenda;
     }
-    
-    public void cadEncomenda (String idcliente, String entrega, String status, String idproduto, String data_solicitacao, String data_previsao  ) throws Exception{ 
+
+    public void cadEncomenda(String idcliente, 
+            String entrega, String status, 
+            String idproduto, String data_previsao, 
+            String observacao) throws Exception {
         EntityManager em = emf.createEntityManager();
-        if(idcliente==null || idcliente.isEmpty() || idcliente.equals("") ){
-            throw new Exception ("Não foi informado o cliente da Encomenda!");             
+        if (idcliente == null || idcliente.isEmpty() || idcliente.equals("")) {
+            throw new Exception("Não foi informado o idcliente ");
         }
-       
-        if(idproduto==null || idproduto.isEmpty() || idproduto.equals("") ){
-            throw new Exception("Não foi informado o idproduto ");            
+        if (entrega == null || entrega.isEmpty() || entrega.equals("")) {
+            throw new Exception("Não foi informado o entrega ");
         }
-        if(data_previsao==null || data_previsao.isEmpty() || data_previsao.equals("") ){
-            throw new Exception("Não foi informado o idproduto ");            
+        if (status == null || status.isEmpty() || status.equals("")) {
+            throw new Exception("Não foi informado o status ");
         }
-        
-        
-        
+        if (idproduto == null || idproduto.isEmpty() || idproduto.equals("")) {
+            throw new Exception("Não foi informado o idproduto ");
+        }
+         if (data_previsao == null || data_previsao.isEmpty() || data_previsao.equals("")) {
+            throw new Exception("Não foi informado o data_previsao ");
+        }
+         if (observacao == null || observacao.isEmpty() || observacao.equals("")) {
+            throw new Exception("Não foi informado o observacao ");
+        }
+
         em.getTransaction().begin();
-        
+
         Encomenda encomenda = new Encomenda();
-        Produto produtos = em.find(Produto.class, Long.valueOf(idproduto)); 
-        Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));                 
-        encomenda.setCliente(cliente);        
+        Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));
+        encomenda.setCliente(cliente);     
+        Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
+        encomenda.setProduto(produtos);         
         encomenda.setEntrega(entrega);
-        encomenda.setStatus(status);       
-        encomenda.setProduto(produtos);
-        encomenda.setData_solicitacao(LocalDateTime.now());
-        encomenda.setData_previsao(LocalDateTime.parse(data_previsao));
-        
-       
+        encomenda.setStatus(status);        
+        encomenda.setData_solicitacao(LocalDateTime.now());        
+        encomenda.setData_previsao(LocalDate.parse(data_previsao));
+        encomenda.setObservacao(observacao);
+
         em.persist(encomenda);
         em.getTransaction().commit();
-        
+
         em.clear();
-        em.close();              
-        
+        em.close();
+
     }
-     public void editEncomenda (String idencomenda, String idcliente, String entrega, String status, String idproduto, String data_solicitacao, String data_previsao ) throws Exception{ 
+
+    public void editEncomenda(String idencomenda, String idcliente, String entrega, String status, String idproduto, String data_previsao, String observacao) throws Exception {
         EntityManager em = emf.createEntityManager();
-        if(idencomenda==null || idencomenda.isEmpty() || idencomenda.equals("") ){
-            throw new Exception ("Não foi informado o idencomenda da Encomenda!");             
+        if (idencomenda == null || idencomenda.isEmpty() || idencomenda.equals("")) {
+            throw new Exception("Não foi informado o idencomenda da Encomenda!");
         }
-        if(idcliente==null || idcliente.isEmpty() || idcliente.equals("") ){
-            throw new Exception("Não foi informado o idcliente do Cliente!");            
+        if (idcliente == null || idcliente.isEmpty() || idcliente.equals("")) {
+            throw new Exception("Não foi informado o idcliente do Cliente!");
         }
-        if(idproduto==null || idproduto.isEmpty() || idproduto.equals("") ){
-            throw new Exception("Não foi informado o idproduto ");            
+        if (idproduto == null || idproduto.isEmpty() || idproduto.equals("")) {
+            throw new Exception("Não foi informado o idproduto ");
         }
-        if(data_previsao==null || data_previsao.isEmpty() || data_previsao.equals("") ){
-            throw new Exception("Não foi informado se o pedido é para entrega!");            
+        if (data_previsao == null || data_previsao.isEmpty() || data_previsao.equals("")) {
+            throw new Exception("Não foi informado se o pedido é para entrega!");
         }
-        
-        
-        
+
         em.getTransaction().begin();
-        
+
         Encomenda encomenda = em.find(Encomenda.class, Long.valueOf(idencomenda));
-        Produto produtos = em.find(Produto.class, Long.valueOf(idproduto)); 
-        Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));   
+       Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
+        encomenda.setProduto(produtos);
+        Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));
         encomenda.setCliente(cliente);        
         encomenda.setEntrega(entrega);
-        encomenda.setStatus(status);       
-        encomenda.setProduto(produtos);
-        encomenda.setData_solicitacao(LocalDateTime.now());
-        encomenda.setData_previsao(LocalDateTime.parse(data_previsao));       
-        
-       
+        encomenda.setStatus(status);        
+        encomenda.setData_previsao(LocalDate.parse(data_previsao));
+        encomenda.setObservacao(observacao);
+
         em.merge(encomenda);
         em.getTransaction().commit();
-        
+
         em.clear();
-        em.close();              
-        
+        em.close();
+
     }
-     public Encomenda getEncomenda(String idencomenda)throws Exception{
+
+    public Encomenda getEncomenda(String idencomenda) throws Exception {
         Encomenda encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        
-        encomenda = em.find(Encomenda.class,Long.valueOf(idencomenda));
+
+        encomenda = em.find(Encomenda.class, Long.valueOf(idencomenda));
         em.getTransaction().commit();
         em.clear();
         em.close();
-        
-        if(encomenda==null   || encomenda.equals("") ){
-            throw new Exception("Erro ao carregar Encomenda, ID não foi informado");            
-        }        
+
+        if (encomenda == null || encomenda.equals("")) {
+            throw new Exception("Erro ao carregar Encomenda, ID não foi informado");
+        }
         return encomenda;
     }
-    
+
 }

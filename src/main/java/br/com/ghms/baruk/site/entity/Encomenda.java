@@ -6,6 +6,7 @@
 package br.com.ghms.baruk.site.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -27,7 +28,9 @@ public class Encomenda implements Serializable{
     private String entrega;
     private String status;
     private LocalDateTime data_solicitacao;
-    private LocalDateTime data_previsao;
+    private LocalDate data_previsao;
+    private String observacao;
+    
     
     @ManyToOne
     @JoinColumn(name="idproduto")
@@ -37,6 +40,14 @@ public class Encomenda implements Serializable{
     @JoinColumn(name="idcliente")
     private Cliente cliente;
 
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }   
+    
     public Long getIdencomenda() {
         return idencomenda;
     }
@@ -69,11 +80,11 @@ public class Encomenda implements Serializable{
         this.data_solicitacao = data_solicitacao;
     }
 
-    public LocalDateTime getData_previsao() {
+    public LocalDate getData_previsao() {
         return data_previsao;
     }
 
-    public void setData_previsao(LocalDateTime data_previsao) {
+    public void setData_previsao(LocalDate data_previsao) {
         this.data_previsao = data_previsao;
     }
 
