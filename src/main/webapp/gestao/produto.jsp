@@ -1,24 +1,41 @@
-<%--
-    Document   : produto
-    Created on : 13/05/2021, 19:22:23
-    Author     : suporte
+<%-- 
+    Document   : produto1
+    Created on : 15/05/2021, 02:01:21
+    Author     : alephtav
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Produtos</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-        <meta http-equiv="Pragma" content="no-cache">
-        <meta http-equiv="Expires" content="0">
+        <title>Sidebar 07</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="gestao/menu/css/style.css">
     </head>
     <body>
-        <h1>Teste Cad Produto</h1>
-        <div class="container form-group ">
+
+        <div class="wrapper d-flex align-items-stretch">
+            <!-- IMPORTAR MENU LATERAL-->
+            <jsp:include page="menu/menu-lateral.jsp"/>
+
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5">
+                <!-- IMPORTAR MENU PÁGINA--> 
+                <jsp:include page="menu/menu-pagina.jsp"/>
+
+                <h2 class="mb-4">Produtos</h2>
+                <!-- CONTEUDO DE FATO-->
+
+                <div class="container ">
+                   
+                     <div class="container form-group ">
 
             <h2> ${mensagemErro}
                 ${mensagemSucesso}</h2>
@@ -109,8 +126,16 @@
             </div> 
 
         </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>    
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+        <script src="gestao/menu/js/jquery.min.js"></script>
+        <script src="gestao/menu/js/popper.js"></script>
+        <script src="gestao/menu/js/bootstrap.min.js"></script>
+        <script src="gestao/menu/js/main.js"></script>
     </body>
 </html>
