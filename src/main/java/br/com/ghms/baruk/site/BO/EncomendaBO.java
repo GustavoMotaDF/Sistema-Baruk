@@ -41,7 +41,7 @@ public class EncomendaBO {
         return encomenda;
     }
 
-    public List<Encomenda> getCanceladas() {
+    public List<Encomenda> getCanceladas() throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -49,11 +49,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-
+         if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas Canceladas registradas!");
+        }
         return encomenda;
     }
 
-    public List<Encomenda> getProducao() {
+    public List<Encomenda> getProducao() throws Exception{
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -61,11 +63,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas Em Produção registradas!");
+        }
         return encomenda;
     }
 
-    public List<Encomenda> getFinal() {
+    public List<Encomenda> getFinal() throws Exception{
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -73,11 +77,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas Em Fase Final registradas!");
+        }
         return encomenda;
     }
 
-    public List<Encomenda> getFinalizada() {
+    public List<Encomenda> getFinalizada() throws Exception{
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -85,11 +91,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-
+         if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas Finalizadas registradas!");
+        }
         return encomenda;
     }
 
-    public List<Encomenda> getEntregue() {
+    public List<Encomenda> getEntregue() throws Exception{
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -97,11 +105,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas Entregues registradas!");
+        }
         return encomenda;
     }
 
-    public List<Encomenda> getSolicitada() {
+    public List<Encomenda> getSolicitada() throws Exception{
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -109,7 +119,9 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas Solicitadas registradas!");
+        }
         return encomenda;
     }
 

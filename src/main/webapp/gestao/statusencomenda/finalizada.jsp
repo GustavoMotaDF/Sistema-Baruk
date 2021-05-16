@@ -7,6 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <div class="container">
+      <h2> ${mensagemErrofinalizada}
+                            ${mensagemSucesso}</h2>
     <form action="${pageContext.request.contextPath}/Encomenda" method="post">
         <table class="table table-hover table-sm">
             <tr>

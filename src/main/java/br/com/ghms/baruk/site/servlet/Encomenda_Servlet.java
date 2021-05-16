@@ -105,12 +105,90 @@ public class Encomenda_Servlet extends HttpServlet {
 
             }
         }
-        req.setAttribute("solicitada", encomendabo.getSolicitada());
-        req.setAttribute("producao", encomendabo.getProducao());
-        req.setAttribute("final", encomendabo.getFinal());
-        req.setAttribute("finalizada", encomendabo.getFinalizada());
-        req.setAttribute("entregue", encomendabo.getEntregue());
-        req.setAttribute("cancelada", encomendabo.getCanceladas());
+        try {  
+             req.setAttribute("solicitada", encomendabo.getSolicitada());
+         }
+         catch(Exception erro){
+               req.setAttribute("mensagemErrosolicitada", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+              req.setAttribute("producao", encomendabo.getProducao());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErroproducao", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">"+ erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+              req.setAttribute("final", encomendabo.getFinal());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErrofinal", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+             req.setAttribute("finalizada", encomendabo.getFinalizada());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErrofinalizada", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+             req.setAttribute("entregue", encomendabo.getEntregue());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErroentregue", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+             req.setAttribute("cancelada", encomendabo.getCanceladas());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErrocancelada", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
         try {
             req.setAttribute("produtos", produtobo.getProdutos());
             req.setAttribute("clientes", clientebo.getClientes());
@@ -135,23 +213,104 @@ public class Encomenda_Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         req.setAttribute("solicitada", encomendabo.getSolicitada());
-        req.setAttribute("producao", encomendabo.getProducao());
-        req.setAttribute("final", encomendabo.getFinal());
-        req.setAttribute("finalizada", encomendabo.getFinalizada());
-        req.setAttribute("entregue", encomendabo.getEntregue());
-        req.setAttribute("cancelada", encomendabo.getCanceladas());
-        try {
-           
-            
+         try {  
+             req.setAttribute("solicitada", encomendabo.getSolicitada());
+         }
+         catch(Exception erro){
+               req.setAttribute("mensagemErrosolicitada", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+              req.setAttribute("producao", encomendabo.getProducao());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErroproducao", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+              req.setAttribute("final", encomendabo.getFinal());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErrofinal", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+             req.setAttribute("finalizada", encomendabo.getFinalizada());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErrofinalizada", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">"+ erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+             req.setAttribute("entregue", encomendabo.getEntregue());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErroentregue", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+         try {  
+             req.setAttribute("cancelada", encomendabo.getCanceladas());
+         }
+         catch(Exception erro){
+             req.setAttribute("mensagemErrocancelada", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                    + "<script>\n"
+                    + "                    $().ready(function () {\n"
+                    + "                        setTimeout(function () {\n"
+                    + "                            $('#foo').hide();\n"
+                    + "                        }, 10000);\n"
+                    + "                    });\n"
+                    + "                </script>\n"
+                    + "");
+         }
+        
+        
+       
+        
+        
+        
+        try {          
             req.setAttribute("produtos", produtobo.getProdutos());
             req.setAttribute("clientes", clientebo.getClientes());
-            req.setAttribute("status", statusbo.getStatus());
-            
+            req.setAttribute("status", statusbo.getStatus());            
             req.setAttribute("encomendas", encomendabo.getEncomendas());
 
         } catch (Exception erro) {
-            req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro + "</div>"
+            req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
                     + "<script>\n"
                     + "                    $().ready(function () {\n"
                     + "                        setTimeout(function () {\n"
