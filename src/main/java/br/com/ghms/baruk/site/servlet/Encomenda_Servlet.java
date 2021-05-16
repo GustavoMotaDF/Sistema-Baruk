@@ -8,6 +8,7 @@ package br.com.ghms.baruk.site.servlet;
 import br.com.ghms.baruk.site.BO.ClienteBO;
 import br.com.ghms.baruk.site.BO.EncomendaBO;
 import br.com.ghms.baruk.site.BO.ProdutoBO;
+import br.com.ghms.baruk.site.BO.StatusBO;
 import java.io.IOException;
 import java.util.Objects;
 import javax.servlet.ServletException;
@@ -26,6 +27,7 @@ public class Encomenda_Servlet extends HttpServlet {
     private final EncomendaBO encomendabo = new EncomendaBO();
     private final ProdutoBO produtobo = new ProdutoBO();
     private final ClienteBO clientebo = new ClienteBO();
+    private final StatusBO statusbo = new StatusBO();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -89,11 +91,27 @@ public class Encomenda_Servlet extends HttpServlet {
                         + "});</script>");
             }
 
+        } else   if (Objects.nonNull(req.getParameter("consultar"))) {
+            try {
+                req.setAttribute("resultado", encomendabo.getEncomendaCPF(req.getParameter("cpf")));
+                req.getRequestDispatcher("gestao/consulta_encomenda.jsp").forward(req, resp);
+            }
+            catch(Exception erro){
+                 req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> Erro ao tentar editar a Encomenda: " + erro.getMessage() + " caso não saiba o que fazer, procure o administrador do sistema!</strong></div>"
+                        + "<script>$().ready(function() {\n"
+                        + "	setTimeout(function () {\n"
+                        + "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n"
+                        + "	}, 10000); // O valor é representado em milisegundos.\n"
+                        + "});</script>");
+            
+            }
         }
+        
         try {
             req.setAttribute("produtos", produtobo.getProdutos());
            
             req.setAttribute("clientes", clientebo.getClientes());
+            req.setAttribute("status", statusbo.getStatus());
              req.setAttribute("encomendas", encomendabo.getEncomendas());
 
         } catch (Exception erro) {
@@ -116,6 +134,7 @@ public class Encomenda_Servlet extends HttpServlet {
          try {
             req.setAttribute("produtos", produtobo.getProdutos());
             req.setAttribute("clientes", clientebo.getClientes());
+            req.setAttribute("status", statusbo.getStatus());
              req.setAttribute("encomendas", encomendabo.getEncomendas());
 
         } catch (Exception erro) {

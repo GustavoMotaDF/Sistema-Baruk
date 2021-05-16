@@ -8,6 +8,7 @@ package br.com.ghms.baruk.site.BO;
 import br.com.ghms.baruk.site.entity.Cliente;
 import br.com.ghms.baruk.site.entity.Encomenda;
 import br.com.ghms.baruk.site.entity.Produto;
+import br.com.ghms.baruk.site.entity.Status;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -72,7 +73,8 @@ public class EncomendaBO {
         Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
         encomenda.setProduto(produtos);         
         encomenda.setEntrega(entrega);
-        encomenda.setStatus(status);        
+        Status statuss = em.find(Status.class, Long.valueOf(status));
+        encomenda.setStatus(statuss);        
         encomenda.setData_solicitacao(LocalDateTime.now());        
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
         encomenda.setObservacao(observacao);
@@ -108,7 +110,8 @@ public class EncomendaBO {
         Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));
         encomenda.setCliente(cliente);        
         encomenda.setEntrega(entrega);
-        encomenda.setStatus(status);        
+        Status statuss = em.find(Status.class, Long.valueOf(status));
+        encomenda.setStatus(statuss);      
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
         encomenda.setObservacao(observacao);
 
@@ -133,6 +136,22 @@ public class EncomendaBO {
         if (encomenda == null || encomenda.equals("")) {
             throw new Exception("Erro ao carregar Encomenda, ID não foi informado");
         }
+        return encomenda;
+    }
+    
+    public List<Encomenda> getEncomendaCPF(String cpf) throws Exception {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createNativeQuery("SELECT e.data_previsao, e.observacao, c.nome, s.nstatus, p.produto, s.descricao from Encomenda e join Cliente c on c.idcliente=e.idcliente join Produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where c.cpf = :cpf").setParameter("cpf",cpf).getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+            throw new Exception("Sem Encomedas registradas!");
+        }
+
         return encomenda;
     }
 

@@ -25,8 +25,7 @@ public class Encomenda implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idencomenda;    
-    private String entrega;
-    private String status;
+    private String entrega;   
     private LocalDateTime data_solicitacao;
     private LocalDate data_previsao;
     private String observacao;
@@ -39,6 +38,10 @@ public class Encomenda implements Serializable{
     @ManyToOne
     @JoinColumn(name="idcliente")
     private Cliente cliente;
+    
+    @ManyToOne
+    @JoinColumn(name="idstatus")
+    private Status status;
 
     public String getObservacao() {
         return observacao;
@@ -64,13 +67,15 @@ public class Encomenda implements Serializable{
         this.entrega = entrega;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
+
+   
 
     public LocalDateTime getData_solicitacao() {
         return data_solicitacao;

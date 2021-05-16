@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.HibernateError;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Cliente_servlet extends HttpServlet {
                         + "	}, 10000); // O valor é representado em milisegundos.\n"
                         + "});</script>");
 
-            } catch (Exception erro) {
+            } catch (Exception erro ) {
                 req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> Erro ao registrar Cliente: " + erro.getMessage() + " (caso não saiba o que fazer, procure o administrador do sistema!)</strong></div>"
                         + "<script>$().ready(function() {\n"
                         + "	setTimeout(function () {\n"

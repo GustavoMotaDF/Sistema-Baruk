@@ -64,10 +64,9 @@
                                         Status:
                                         <select class="form-control" name="status">
                                             <option value=" ">Selecione ...</option>
-                                            <option value="Encomenda solicitada">Encomenda solicitada</option>
-                                            <option value="Em producao">Em produção</option>
-                                            <option value="Entregue">Entregue</option>            
-                                            <option value="Cancelada">Cancelada</option>
+                                            <c:forEach var="status" items="${status}">                             
+                                                <option value="${status.idstatus}">${status.nstatus}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -124,12 +123,11 @@
                                     <div class="col-md-6">
                                         Status:
                                         <select class="form-control" name="status">
-                                            <option value="${encomendaEditando.status}">${encomendaEditando.status}</option>
+                                            <option value="${encomendaEditando.status.idstatus}">${encomendaEditando.status.nstatus}</option>
                                             <option value=" ">Selecione ...</option>
-                                            <option value="Encomenda solicitada">Encomenda solicitada</option>
-                                            <option value="Em producao">Em produção</option>
-                                            <option value="Entregue">Entregue</option>            
-                                            <option value="Cancelada">Cancelada</option>
+                                             <c:forEach var="status" items="${statuss}">                             
+                                                <option value="${status.idstatus}">${status.nstatus}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -180,7 +178,7 @@
                                             <td>${encomendas.idencomenda}</td>
                                             <td>${encomendas.cliente.nome}</td>
                                             <td>${encomendas.entrega}</td>                                  
-                                            <td>${encomendas.status}</td>                                  
+                                            <td>${encomendas.status.nstatus}</td>                                  
                                             <td>${encomendas.produto.produto}</td>
                                             <td>${encomendas.data_previsao}</td>
                                             <td>${encomendas.observacao}</td>

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : cliente
     Created on : 15/05/2021, 02:28:18
     Author     : alephtav
@@ -28,47 +28,116 @@
 
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
-                <!-- IMPORTAR MENU PÁGINA--> 
+                <!-- IMPORTAR MENU PÁGINA-->
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
                 <h2 class="mb-4">Sidebar #07</h2>
                 <!-- CONTEUDO DE FATO-->
 
                 <div class="container">
-                    <div class="container form-group ">
-                        <h2> ${mensagemErro}
-                            ${mensagemSucesso}</h2>
+                    <div class=" form-group ">
+                        <h4> ${mensagemErro}
+                            ${mensagemSucesso}</h4>
+
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#exampleModalLong">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content container">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Novo Cliente</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="${pageContext.request.contextPath}/Cliente"  method="post">
+                                        <div class="modal-body container">
+
+                                            Nome:
+                                            <input type="text" name="nome" class="form-control" required placeholder="Nome"/>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Telefone:
+                                                    <input type="text" name="telefone" class="form-control" required placeholder="Telefone"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    CPF:
+                                                    <input type="text" name="cpf" class="form-control" required placeholder=" CPF"/>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            Encereço:
+                                            <input type="text" name="endereco" class="form-control"  placeholder="Encereço"/>
+                                            <br>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="submit" name="cadastrar" class="form-control btn btn-success" value="Cadastrar"/>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="reset" class="form-control btn btn-danger" value="Limpar"/>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
                         <form action="${pageContext.request.contextPath}/Cliente"  method="post">
                             <c:if test="${ empty clienteEditando}">
-                                Nome:
-                                <input type="text" name="nome" class="form-control" required placeholder="Nome"/>
-                                <br>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        Telefone:
-                                        <input type="text" name="telefone" class="form-control" required placeholder="Telefone"/>
-                                    </div>
-                                    <div class="col-md-6">
-                                        CPF:
-                                        <input type="text" name="cpf" class="form-control" required placeholder=" CPF"/>
-                                    </div>
-                                </div>
-                                <br>
-                                Encereço:
-                                <input type="text" name="endereco" class="form-control"  placeholder="Encereço"/>
-                                <br>
+                                <c:forEach var="clientes" items="${clientes}">
+                                    <ul class="list-group">                                        
+                                        <li class="list-group-item">
+                                            <button type="button" class="btn btn-secundary form-control" data-toggle="modal" data-target="#a${clientes.cpf}">${clientes.nome}</button>
+                                        </li>                                        
+                                    </ul>
+                                    <!-- Large modal -->
+                                    <br>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="submit" name="cadastrar" class="form-control btn btn-success" value="Cadastrar"/>
+                                    <div class="modal fade bd-example-modal-lg" id="a${clientes.cpf}" tabindex="-1" role="dialog" aria-labelledby="#a${clientes.cpf}" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="a${clientes.cpf}">${clientes.nome}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <table class="table table-hover table-sm">
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                        <th>Telefone</th>
+                                                        <th>CPF</th>
+                                                        <th>Endereço</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>${clientes.nome}</td>
+                                                        <td>${clientes.telefone}</td>
+                                                        <td>${clientes.cpf}</td>
+                                                        <td>${clientes.endereco}</td>
+                                                        <td><input type="radio"  name="idcliente" required value="${clientes.idcliente}"/></td>
+                                                    </tr>
+                                                </table>
+                                                <input class="btn btn-info" type="submit" name="editar" value="editar"/>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <input type="reset" class="form-control btn btn-danger" value="Limpar"/>                       
-                                    </div>
-
-                                </div>
+                                </c:forEach>
 
                             </c:if>
                             <c:if test="${ not empty clienteEditando}">
@@ -102,33 +171,6 @@
                                 </div>
                             </c:if>
                         </form>
-
-
-                        <div class="container">
-                            <form action="${pageContext.request.contextPath}/Cliente" method="post">
-                                <table class="table table-hover table-sm">
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Telefone</th>
-                                        <th>CPF</th>
-                                        <th>Endereço</th>
-                                    </tr>
-                                    <c:forEach var="clientes" items="${clientes}">
-                                        <tr>
-
-                                            <td>${clientes.nome}</td>
-                                            <td>${clientes.telefone}</td>
-                                            <td>${clientes.cpf}</td>
-                                            <td>${clientes.endereco}</td>
-                                            <td><input type="radio" name="idcliente" value="${clientes.idcliente}"/></td>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
-                                <input class="btn btn-info " type="submit" name="editar" value="editar"/>
-                            </form>
-
-
-                        </div>
                     </div>
                 </div>
 

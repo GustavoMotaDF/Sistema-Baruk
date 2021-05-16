@@ -10,8 +10,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.LockModeType;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
+import org.hibernate.HibernateError;
 
 /**
  *
@@ -39,15 +40,15 @@ public class ClienteBO {
         EntityManager em = emf.createEntityManager();
         if(nome==null || nome.isEmpty() || nome.equals("") ){
             throw new Exception ("Não foi informado o NOME!");             
-        }
-       
+        }       
         if(telefone==null || telefone.isEmpty() || telefone.equals("") ){
             throw new Exception("Não foi informado o TELEFONE! ");            
         }
+        
         if(cpf==null || cpf.isEmpty() || cpf.equals("") ){
             throw new Exception("Não foi informado o CPF! ");            
         }
-        
+        try {
         Cliente cliente = new Cliente();
         cliente.setNome(nome);
         cliente.setTelefone(telefone);
@@ -55,10 +56,15 @@ public class ClienteBO {
         cliente.setEndereco(endereco);
         cliente.setData_cadastro(LocalDateTime.now());
         
-        em.getTransaction().begin();
-                
-       
+        em.getTransaction().begin(); 
         em.persist(cliente);
+        }catch(PersistenceException erro){
+           
+            throw new Exception("Entrada duplicada; o CPF ou o TELEFONE já está cadastrado no banco de dados!"+ erro.getCause().getMessage());
+            
+        }
+        
+        
         em.getTransaction().commit();
         
         em.clear();
@@ -111,5 +117,11 @@ public class ClienteBO {
         }        
         return cliente;
     }
+
+    private void rollbackTransactionQuietly(EntityManager em) {
+        throw new UnsupportedOperationException("Entrada duplicada"); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
       
 }
