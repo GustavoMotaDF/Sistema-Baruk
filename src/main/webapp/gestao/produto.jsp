@@ -5,7 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
@@ -27,7 +27,7 @@
 
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
-                <!-- IMPORTAR MENU PÃGINA--> 
+                <!-- IMPORTAR MENU PÁGINA--> 
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
                 <h2 class="mb-4">Produtos</h2>
@@ -66,7 +66,7 @@
                                                 <input type="text" name="valor" class="form-control" required placeholder="Valor"/>
                                             </div>
                                             <div class="col-md-6">
-                                                Tempo de produÃ§Ã£o:
+                                                Tempo de produção:
                                                 <input type="text" name="tproducao" class="form-control" required placeholder=" Tempo de producao"/>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                                         <th>Produto</th>
                                                         <th>Descricao</th>
                                                         <th>Valor</th>
-                                                        <th>Tempo de produÃ§Ã£o</th>                         
+                                                        <th>Tempo de produção</th>                         
                                                     </tr>
 
                                                     <tr>
@@ -151,7 +151,7 @@
                                         <input type="text" name="valor" class="form-control" value="${produtoEditando.valor}" required placeholder="Valor"/>
                                     </div>
                                     <div class="col-md-6">
-                                        Tempo de produÃ§Ã£o:
+                                        Tempo de produção:
                                         <input type="text" name="tproducao" class="form-control" value="${produtoEditando.tproducao}" required placeholder=" Tempo de producao"/>
                                     </div>
                                 </div>

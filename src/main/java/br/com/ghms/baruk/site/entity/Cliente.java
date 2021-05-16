@@ -15,18 +15,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author alephtav
  */
 @Entity
+@Table(name="tb_cliente")
 public class Cliente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idcliente;
     private String nome;
-    @Column(unique=true)
     private String telefone;
     @Column(unique=true)
     private String cpf;

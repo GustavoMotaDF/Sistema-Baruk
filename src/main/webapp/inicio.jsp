@@ -4,7 +4,8 @@
     Author     : alephtav
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
@@ -26,7 +27,7 @@
 
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
-                <!-- IMPORTAR MENU PÃGINA--> 
+                <!-- IMPORTAR MENU PÁGINA--> 
                 <jsp:include page="gestao/menu/menu-pagina.jsp"/>
 
                 <h2 class="mb-4">Sidebar #07</h2>

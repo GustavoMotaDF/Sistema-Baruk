@@ -41,9 +41,81 @@ public class EncomendaBO {
         return encomenda;
     }
 
-    public void cadEncomenda(String idcliente, 
-            String entrega, String status, 
-            String idproduto, String data_previsao, 
+    public List<Encomenda> getCanceladas() {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createQuery("from Encomenda where idstatus= 6 ").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        return encomenda;
+    }
+
+    public List<Encomenda> getProducao() {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createQuery("from Encomenda where idstatus= 2 ").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        return encomenda;
+    }
+
+    public List<Encomenda> getFinal() {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createQuery("from Encomenda where idstatus= 3 ").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        return encomenda;
+    }
+
+    public List<Encomenda> getFinalizada() {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createQuery("from Encomenda where idstatus= 4 ").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        return encomenda;
+    }
+
+    public List<Encomenda> getEntregue() {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createQuery("from Encomenda where idstatus= 5 ").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        return encomenda;
+    }
+
+    public List<Encomenda> getSolicitada() {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createQuery("from Encomenda where idstatus= 1 ").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        return encomenda;
+    }
+
+    public void cadEncomenda(String idcliente,
+            String entrega, String status,
+            String idproduto, String data_previsao,
             String observacao) throws Exception {
         EntityManager em = emf.createEntityManager();
         if (idcliente == null || idcliente.isEmpty() || idcliente.equals("")) {
@@ -58,24 +130,21 @@ public class EncomendaBO {
         if (idproduto == null || idproduto.isEmpty() || idproduto.equals("")) {
             throw new Exception("Não foi informado o idproduto ");
         }
-         if (data_previsao == null || data_previsao.isEmpty() || data_previsao.equals("")) {
+        if (data_previsao == null || data_previsao.isEmpty() || data_previsao.equals("")) {
             throw new Exception("Não foi informado o data_previsao ");
-        }
-         if (observacao == null || observacao.isEmpty() || observacao.equals("")) {
-            throw new Exception("Não foi informado o observacao ");
         }
 
         em.getTransaction().begin();
 
         Encomenda encomenda = new Encomenda();
         Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));
-        encomenda.setCliente(cliente);     
+        encomenda.setCliente(cliente);
         Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
-        encomenda.setProduto(produtos);         
+        encomenda.setProduto(produtos);
         encomenda.setEntrega(entrega);
         Status statuss = em.find(Status.class, Long.valueOf(status));
-        encomenda.setStatus(statuss);        
-        encomenda.setData_solicitacao(LocalDateTime.now());        
+        encomenda.setStatus(statuss);
+        encomenda.setData_solicitacao(LocalDateTime.now());
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
         encomenda.setObservacao(observacao);
 
@@ -105,13 +174,13 @@ public class EncomendaBO {
         em.getTransaction().begin();
 
         Encomenda encomenda = em.find(Encomenda.class, Long.valueOf(idencomenda));
-       Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
+        Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
         encomenda.setProduto(produtos);
         Cliente cliente = em.find(Cliente.class, Long.valueOf(idcliente));
-        encomenda.setCliente(cliente);        
+        encomenda.setCliente(cliente);
         encomenda.setEntrega(entrega);
         Status statuss = em.find(Status.class, Long.valueOf(status));
-        encomenda.setStatus(statuss);      
+        encomenda.setStatus(statuss);
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
         encomenda.setObservacao(observacao);
 
@@ -138,12 +207,12 @@ public class EncomendaBO {
         }
         return encomenda;
     }
-    
+
     public List<Encomenda> getEncomendaCPF(String cpf) throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        encomenda = em.createNativeQuery("SELECT e.data_previsao, e.observacao, c.nome, s.nstatus, p.produto, s.descricao from Encomenda e join Cliente c on c.idcliente=e.idcliente join Produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where c.cpf = :cpf").setParameter("cpf",cpf).getResultList();
+        encomenda = em.createNativeQuery("SELECT e.data_previsao, e.observacao, c.nome, s.nstatus, p.produto, s.descricao from Encomenda e join Cliente c on c.idcliente=e.idcliente join Produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where c.cpf = :cpf").setParameter("cpf", cpf).getResultList();
         em.getTransaction().commit();
         em.clear();
         em.close();

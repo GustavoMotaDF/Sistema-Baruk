@@ -91,28 +91,32 @@ public class Encomenda_Servlet extends HttpServlet {
                         + "});</script>");
             }
 
-        } else   if (Objects.nonNull(req.getParameter("consultar"))) {
+        } else if (Objects.nonNull(req.getParameter("consultar"))) {
             try {
                 req.setAttribute("resultado", encomendabo.getEncomendaCPF(req.getParameter("cpf")));
                 req.getRequestDispatcher("gestao/consulta_encomenda.jsp").forward(req, resp);
-            }
-            catch(Exception erro){
-                 req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> Erro ao tentar editar a Encomenda: " + erro.getMessage() + " caso não saiba o que fazer, procure o administrador do sistema!</strong></div>"
+            } catch (Exception erro) {
+                req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> Erro ao tentar editar a Encomenda: " + erro.getMessage() + " caso não saiba o que fazer, procure o administrador do sistema!</strong></div>"
                         + "<script>$().ready(function() {\n"
                         + "	setTimeout(function () {\n"
                         + "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n"
                         + "	}, 10000); // O valor é representado em milisegundos.\n"
                         + "});</script>");
-            
+
             }
         }
-        
+        req.setAttribute("solicitada", encomendabo.getSolicitada());
+        req.setAttribute("producao", encomendabo.getProducao());
+        req.setAttribute("final", encomendabo.getFinal());
+        req.setAttribute("finalizada", encomendabo.getFinalizada());
+        req.setAttribute("entregue", encomendabo.getEntregue());
+        req.setAttribute("cancelada", encomendabo.getCanceladas());
         try {
             req.setAttribute("produtos", produtobo.getProdutos());
-           
             req.setAttribute("clientes", clientebo.getClientes());
-            req.setAttribute("status", statusbo.getStatus());
-             req.setAttribute("encomendas", encomendabo.getEncomendas());
+            req.setAttribute("status", statusbo.getStatus());            
+            req.setAttribute("encomendas", encomendabo.getEncomendas());
+            
 
         } catch (Exception erro) {
             req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
@@ -131,11 +135,20 @@ public class Encomenda_Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         try {
+         req.setAttribute("solicitada", encomendabo.getSolicitada());
+        req.setAttribute("producao", encomendabo.getProducao());
+        req.setAttribute("final", encomendabo.getFinal());
+        req.setAttribute("finalizada", encomendabo.getFinalizada());
+        req.setAttribute("entregue", encomendabo.getEntregue());
+        req.setAttribute("cancelada", encomendabo.getCanceladas());
+        try {
+           
+            
             req.setAttribute("produtos", produtobo.getProdutos());
             req.setAttribute("clientes", clientebo.getClientes());
             req.setAttribute("status", statusbo.getStatus());
-             req.setAttribute("encomendas", encomendabo.getEncomendas());
+            
+            req.setAttribute("encomendas", encomendabo.getEncomendas());
 
         } catch (Exception erro) {
             req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\">" + erro + "</div>"
@@ -148,7 +161,7 @@ public class Encomenda_Servlet extends HttpServlet {
                     + "                </script>\n"
                     + "");
         }
-         
+
         req.getRequestDispatcher("gestao/encomendas.jsp").forward(req, resp);
 
     }

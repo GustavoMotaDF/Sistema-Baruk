@@ -5,7 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <!doctype html>
@@ -28,7 +28,7 @@
 
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
-                <!-- IMPORTAR MENU PÃGINA-->
+                <!-- IMPORTAR MENU PÁGINA-->
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
                 <h2 class="mb-4">Sidebar #07</h2>
@@ -73,8 +73,8 @@
                                                 </div>
                                             </div>
                                             <br>
-                                            EncereÃ§o:
-                                            <input type="text" name="endereco" class="form-control"  placeholder="EncereÃ§o"/>
+                                            Encereço:
+                                            <input type="text" name="endereco" class="form-control"  placeholder="Encereço"/>
                                             <br>
                                         </div>
 
@@ -123,7 +123,7 @@
                                                         <th>Nome</th>
                                                         <th>Telefone</th>
                                                         <th>CPF</th>
-                                                        <th>EndereÃ§o</th>
+                                                        <th>Endereço</th>
                                                     </tr>
                                                     <tr>
                                                         <td>${clientes.nome}</td>
@@ -157,8 +157,8 @@
                                     </div>
                                 </div>
                                 <br>
-                                EncereÃ§o:
-                                <input type="text" name="endereco" value="${clienteEditando.endereco}" class="form-control"  placeholder="EncereÃ§o"/>
+                                Encereço:
+                                <input type="text" name="endereco" value="${clienteEditando.endereco}" class="form-control"  placeholder="Encereço"/>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">

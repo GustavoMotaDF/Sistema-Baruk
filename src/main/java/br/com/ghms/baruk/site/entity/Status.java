@@ -8,6 +8,7 @@ package br.com.ghms.baruk.site.entity;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +27,12 @@ import javax.persistence.Table;
 public class Status implements Serializable {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(unique=true)
     private Long idstatus;
-    private String nstatus;
+     @Column(unique=true)
+    private String nstatus;   
     private String valor;
+     @Column(unique=true)
     private String descricao;
     private String cor;
     

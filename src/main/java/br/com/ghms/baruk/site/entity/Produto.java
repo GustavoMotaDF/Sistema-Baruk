@@ -13,12 +13,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author suporte
  */
 @Entity
+@Table(name="tb_produto")
 public class Produto implements Serializable {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

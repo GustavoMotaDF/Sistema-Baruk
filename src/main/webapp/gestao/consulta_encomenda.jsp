@@ -3,9 +3,8 @@
     Created on : 16/05/2021, 03:51:12
     Author     : alephtav
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
@@ -27,7 +26,7 @@
 
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
-                <!-- IMPORTAR MENU PÃGINA--> 
+                <!-- IMPORTAR MENU PÁGINA--> 
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
                 <h2 class="mb-4">Sidebar #07</h2>
