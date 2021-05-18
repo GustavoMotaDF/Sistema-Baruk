@@ -162,15 +162,36 @@ public class EncomendaBO {
         encomenda.setObservacao(observacao);
         
        Random random = new Random();
-       int idpesquis = 0;  
-       for(idpesquis = 0; idpesquis <= 10; idpesquis++){
+       String randonlimit = null;  
+       String randonlimit2 = null;  
+       for(int idpesquis = 0; idpesquis <= 10; idpesquis++){
            
-            int idrandon = random.nextInt(100000);  
-            idpesquis = 
+            int randon = random.nextInt(999999999);
+            int randon2 = random.nextInt(555666888);
+            
+            idpesquis = randon*(random.nextInt(999999999))*(random.nextInt(9));
+            int idpesquis2 = randon2*(random.nextInt(555666888))*(random.nextInt(9));
+            if(idpesquis < 0){
+               idpesquis = idpesquis*-1;
+            }
+             if(idpesquis2 < 0){
+               idpesquis2 = idpesquis2*-1;
+            }
+            
+            System.out.println(idpesquis);
+            System.out.println(idpesquis2);
+            
+            String parsee = Integer.toString(idpesquis);
+            String parsee2 = Integer.toString(idpesquis2);
+            
+            randonlimit = parsee.length() <= 4 ? parsee : parsee.substring(0, 4);
+            randonlimit2 = parsee2.length() <= 4 ? parsee2 : parsee2.substring(0, 4);
+            System.out.println(randonlimit);
+            System.out.println(randonlimit2);
+           
        }       
-        
-        
-        String idpesquisa = "BARUK-" + idpesquis;
+        int randon3 = random.nextInt(9);        
+        String idpesquisa = "BA" + randonlimit+randon3+randonlimit2+"RUK";
 
         System.out.println(idpesquisa);
 
@@ -236,11 +257,11 @@ public class EncomendaBO {
         return encomenda;
     }
 
-    public List<Encomenda> getEncomendaCPF(String cpf) throws Exception {
+    public List<Encomenda> getEncomendaIdpesquisa(String idpesquisa) throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        encomenda = em.createNativeQuery("SELECT e.data_previsao, e.observacao, c.nome, s.nstatus, p.produto, s.descricao from tb_encomenda e join tb_cliente c on c.idcliente=e.idcliente join tb_produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where c.cpf = :cpf").setParameter("cpf", cpf).getResultList();
+        encomenda = em.createNativeQuery("SELECT e.idpesquisa, e.entrega, e.data_previsao, e.observacao, c.nome, p.produto, s.nstatus, s.descricao, s.cor, s.valor from tb_encomenda e join tb_cliente c on c.idcliente=e.idcliente join tb_produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where e.idpesquisa =:idpesquisa ;").setParameter("idpesquisa", idpesquisa).getResultList();
         em.getTransaction().commit();
         em.clear();
         em.close();

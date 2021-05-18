@@ -201,7 +201,8 @@ public class Encomenda_Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         try {  
+         
+        try {  
              req.setAttribute("solicitada", encomendabo.getSolicitada());
          }
          catch(Exception erro){
@@ -288,7 +289,6 @@ public class Encomenda_Servlet extends HttpServlet {
         
         
        
-        
         
         
         try {          

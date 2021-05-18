@@ -26,7 +26,7 @@ public class Consulta_servlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        if (Objects.nonNull(req.getParameter("consultar"))) {
             try {
-                req.setAttribute("resultado", encomendabo.getEncomendaCPF(req.getParameter("cpf")));
+                req.setAttribute("resultado", encomendabo.getEncomendaIdpesquisa(req.getParameter("idpesquisa")));
             } catch (Exception erro) {
                 req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> Erro ao tentar editar a Encomenda: " + erro.getMessage() + " caso não saiba o que fazer, procure o administrador do sistema!</strong></div>"
                         + "<script>$().ready(function() {\n"
