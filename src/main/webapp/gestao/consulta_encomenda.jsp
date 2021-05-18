@@ -32,24 +32,39 @@
                 <h2 class="mb-4">Sidebar #07</h2>
                 <!-- CONTEUDO DE FATO-->
                 <c:if test="${ empty resultado}">
-                     <div class="container">
-                    <form action="${pageContext.request.contextPath}/Encomenda"  method="post">
-                        CPF:
-                        <input type="text" name="cpf" class="form-control" required placeholder="CPF"/>
-                        <br>
-                        <input type="submit" name="consultar" class="form-control btn btn-info" value="Consultar"/>
-                    </form>
-                </div>
+                    <div class="container">
+                        <form action="${pageContext.request.contextPath}/Consulta-Encomenda"  method="post">
+                            CPF:
+                            <input type="text" name="cpf" class="form-control" required placeholder="CPF"/>
+                            <br>
+                            <input type="submit" name="consultar" class="form-control btn btn-info" value="Consultar"/>
+                        </form>
+                    </div>
                 </c:if>
                 <c:if test="${ not empty resultado}">
-                    
-                    
-                    ${resultado[0]}
-                    ${resultado[1]}
-                    ${resultado[2]}
-                    ${resultado[3]}
-                    
-                    
+
+
+
+
+
+
+                    <table class="table table-hover table-sm">
+                        <tr>
+                            <th></th>
+                        </tr>
+
+                        <tr>
+                            <td>${resultado[0][0]}</td>
+                            <td>${resultado[0][1]}</td>
+                            <td>${resultado[0][2]}</td>
+                            <td>${resultado[0][3]}</td>
+                            <td>${resultado[0][4]}</td>
+                            <td>${resultado[0][5]}</td>
+
+
+                    </table>
+
+
                 </c:if>
 
 

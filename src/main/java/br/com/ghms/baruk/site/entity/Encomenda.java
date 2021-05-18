@@ -33,6 +33,15 @@ public class Encomenda implements Serializable{
     private LocalDateTime data_solicitacao;
     private LocalDate data_previsao;
     private String observacao;
+    private String idpesquisa;
+
+    public String getIdpesquisa() {
+        return idpesquisa;
+    }
+
+    public void setIdpesquisa(String idpesquisa) {
+        this.idpesquisa = idpesquisa;
+    }
     
     
     @ManyToOne

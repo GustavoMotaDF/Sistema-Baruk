@@ -9,7 +9,7 @@
 
 <div class="container">
     <h2> ${mensagemErroentregue}
-                            ${mensagemSucesso}</h2>
+                            </h2>
     <form action="${pageContext.request.contextPath}/Encomenda" method="post">
         <table class="table table-hover table-sm">
             <tr>

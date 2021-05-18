@@ -12,6 +12,7 @@ import br.com.ghms.baruk.site.entity.Status;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -49,13 +50,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-         if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
             throw new Exception("Sem Encomedas Canceladas registradas!");
         }
         return encomenda;
     }
 
-    public List<Encomenda> getProducao() throws Exception{
+    public List<Encomenda> getProducao() throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -69,7 +70,7 @@ public class EncomendaBO {
         return encomenda;
     }
 
-    public List<Encomenda> getFinal() throws Exception{
+    public List<Encomenda> getFinal() throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -83,7 +84,7 @@ public class EncomendaBO {
         return encomenda;
     }
 
-    public List<Encomenda> getFinalizada() throws Exception{
+    public List<Encomenda> getFinalizada() throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -91,13 +92,13 @@ public class EncomendaBO {
         em.getTransaction().commit();
         em.clear();
         em.close();
-         if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
             throw new Exception("Sem Encomedas Finalizadas registradas!");
         }
         return encomenda;
     }
 
-    public List<Encomenda> getEntregue() throws Exception{
+    public List<Encomenda> getEntregue() throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -111,7 +112,7 @@ public class EncomendaBO {
         return encomenda;
     }
 
-    public List<Encomenda> getSolicitada() throws Exception{
+    public List<Encomenda> getSolicitada() throws Exception {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -159,6 +160,21 @@ public class EncomendaBO {
         encomenda.setData_solicitacao(LocalDateTime.now());
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
         encomenda.setObservacao(observacao);
+        
+       Random random = new Random();
+       int idpesquis = 0;  
+       for(idpesquis = 0; idpesquis <= 10; idpesquis++){
+           
+            int idrandon = random.nextInt(100000);  
+            idpesquis = 
+       }       
+        
+        
+        String idpesquisa = "BARUK-" + idpesquis;
+
+        System.out.println(idpesquisa);
+
+        encomenda.setIdpesquisa(idpesquisa);
 
         em.persist(encomenda);
         em.getTransaction().commit();
@@ -224,7 +240,7 @@ public class EncomendaBO {
         List<Encomenda> encomenda;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        encomenda = em.createNativeQuery("SELECT e.data_previsao, e.observacao, c.nome, s.nstatus, p.produto, s.descricao from Encomenda e join Cliente c on c.idcliente=e.idcliente join Produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where c.cpf = :cpf").setParameter("cpf", cpf).getResultList();
+        encomenda = em.createNativeQuery("SELECT e.data_previsao, e.observacao, c.nome, s.nstatus, p.produto, s.descricao from tb_encomenda e join tb_cliente c on c.idcliente=e.idcliente join tb_produto p on p.idproduto=e.idproduto join tb_status s on s.idstatus=e.idstatus  where c.cpf = :cpf").setParameter("cpf", cpf).getResultList();
         em.getTransaction().commit();
         em.clear();
         em.close();
