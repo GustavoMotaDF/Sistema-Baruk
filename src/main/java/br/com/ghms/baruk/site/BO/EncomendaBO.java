@@ -178,9 +178,6 @@ public class EncomendaBO {
                idpesquis2 = idpesquis2*-1;
             }
             
-            System.out.println(idpesquis);
-            System.out.println(idpesquis2);
-            
             String parsee = Integer.toString(idpesquis);
             String parsee2 = Integer.toString(idpesquis2);
             
