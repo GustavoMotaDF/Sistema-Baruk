@@ -22,7 +22,7 @@
             </tr>
             <c:forEach var="final" items="${final}">
                 <tr>
-                    <td>${final.idencomenda}</td>
+                    <td>${final.idpesquisa}</td>
                     <td>${final.cliente.nome}</td>
                     <td>${final.entrega}</td>                                  
                     <td>${final.status.nstatus}</td>                                  

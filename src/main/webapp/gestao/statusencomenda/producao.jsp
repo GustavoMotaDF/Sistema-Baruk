@@ -22,7 +22,7 @@
             </tr>
             <c:forEach var="producao" items="${producao}">
                 <tr>
-                    <td>${producao.idencomenda}</td>
+                    <td>${producao.idpesquisa}</td>
                     <td>${producao.cliente.nome}</td>
                     <td>${producao.entrega}</td>                                  
                     <td>${producao.status.nstatus}</td>                                  

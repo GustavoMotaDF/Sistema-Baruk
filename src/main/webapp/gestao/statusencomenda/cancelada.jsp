@@ -24,7 +24,7 @@
             </tr>
             <c:forEach var="cancelada" items="${cancelada}">
                 <tr>
-                    <td>${cancelada.idencomenda}</td>
+                    <td>${cancelada.idpesquisa}</td>
                     <td>${cancelada.cliente.nome}</td>
                     <td>${cancelada.entrega}</td>                                  
                     <td>${cancelada.status.nstatus}</td>                                  

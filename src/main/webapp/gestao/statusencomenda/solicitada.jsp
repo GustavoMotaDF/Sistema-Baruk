@@ -23,7 +23,7 @@
             </tr>
             <c:forEach var="solicitada" items="${solicitada}">
                 <tr>
-                    <td>${solicitada.idencomenda}</td>
+                    <td>${solicitada.idpesquisa}</td>
                     <td>${solicitada.cliente.nome}</td>
                     <td>${solicitada.entrega}</td>                                  
                     <td>${solicitada.status.nstatus}</td>                                  
