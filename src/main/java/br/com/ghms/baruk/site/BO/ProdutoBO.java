@@ -7,6 +7,8 @@ package br.com.ghms.baruk.site.BO;
 
 import br.com.ghms.baruk.site.entity.Encomenda;
 import br.com.ghms.baruk.site.entity.Produto;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,13 +47,17 @@ public class ProdutoBO {
         if (produto == null || produto.isEmpty() || produto.equals("")) {
             throw new Exception("Não foi informado o telefone do Cliente!");
         }
+        
         em.getTransaction().begin();
         Produto produtos = new Produto();
         produtos.setProduto(produto);
         produtos.setDescricao(descricao);
-        produtos.setValor(Double.parseDouble(valor));
+        System.out.println(valor);
+        BigDecimal valorok = new BigDecimal(valor);
+        System.out.println(valorok);
+        produtos.setValor(valorok);
         produtos.setTproducao(tproducao);
-
+        
         em.persist(produtos);
         em.getTransaction().commit();
 
@@ -73,7 +79,8 @@ public class ProdutoBO {
         Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));
         produtos.setProduto(produto);
         produtos.setDescricao(descricao);
-        produtos.setValor(Double.parseDouble(valor));
+        BigDecimal valorok = new BigDecimal(valor);
+        produtos.setValor(valorok);
         produtos.setTproducao(tproducao);
 
         em.persist(produtos);

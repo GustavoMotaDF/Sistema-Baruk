@@ -6,6 +6,7 @@
 package br.com.ghms.baruk.site.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -33,8 +34,19 @@ public class Encomenda implements Serializable{
     private LocalDateTime data_solicitacao;
     private LocalDate data_previsao;
     private String observacao;
+    private BigDecimal valor_adicional;
     private String idpesquisa;
 
+    public BigDecimal getValor_adicional() {
+        return valor_adicional;
+    }
+
+    public void setValor_adicional(BigDecimal valor_adicional) {
+        this.valor_adicional = valor_adicional;
+    }
+
+    
+    
     public String getIdpesquisa() {
         return idpesquisa;
     }

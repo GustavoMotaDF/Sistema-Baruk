@@ -6,6 +6,7 @@
 package br.com.ghms.baruk.site.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Produto implements Serializable {
     private Long idproduto;
     private String produto;
     private String descricao;
-    private Double valor;
+    private BigDecimal valor;
     private String tproducao;
     
     
@@ -67,11 +68,11 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

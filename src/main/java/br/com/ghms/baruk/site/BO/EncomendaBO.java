@@ -9,6 +9,7 @@ import br.com.ghms.baruk.site.entity.Cliente;
 import br.com.ghms.baruk.site.entity.Encomenda;
 import br.com.ghms.baruk.site.entity.Produto;
 import br.com.ghms.baruk.site.entity.Status;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -129,7 +130,7 @@ public class EncomendaBO {
     public void cadEncomenda(String idcliente,
             String entrega, String status,
             String idproduto, String data_previsao,
-            String observacao) throws Exception {
+            String observacao, String valor_adicional) throws Exception {
         EntityManager em = emf.createEntityManager();
         if (idcliente == null || idcliente.isEmpty() || idcliente.equals("")) {
             throw new Exception("Não foi informado o idcliente ");
@@ -159,6 +160,8 @@ public class EncomendaBO {
         encomenda.setStatus(statuss);
         encomenda.setData_solicitacao(LocalDateTime.now());
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
+        BigDecimal valorokk = new BigDecimal(valor_adicional);
+        encomenda.setValor_adicional(valorokk);
         encomenda.setObservacao(observacao);
         
        Random random = new Random();
@@ -202,7 +205,7 @@ public class EncomendaBO {
 
     }
 
-    public void editEncomenda(String idencomenda, String idcliente, String entrega, String status, String idproduto, String data_previsao, String observacao) throws Exception {
+    public void editEncomenda(String idencomenda, String idcliente, String entrega, String status, String idproduto, String data_previsao, String observacao, String valor_adicional) throws Exception {
         EntityManager em = emf.createEntityManager();
         if (idencomenda == null || idencomenda.isEmpty() || idencomenda.equals("")) {
             throw new Exception("Não foi informado o idencomenda da Encomenda!");
@@ -228,6 +231,8 @@ public class EncomendaBO {
         Status statuss = em.find(Status.class, Long.valueOf(status));
         encomenda.setStatus(statuss);
         encomenda.setData_previsao(LocalDate.parse(data_previsao));
+         BigDecimal valorokk = new BigDecimal(valor_adicional);
+        encomenda.setValor_adicional(valorokk);
         encomenda.setObservacao(observacao);
 
         em.merge(encomenda);

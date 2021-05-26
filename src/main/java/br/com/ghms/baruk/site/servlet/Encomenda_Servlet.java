@@ -31,6 +31,7 @@ public class Encomenda_Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
             try {
                 encomendabo.cadEncomenda(req.getParameter("idcliente"),
@@ -38,6 +39,7 @@ public class Encomenda_Servlet extends HttpServlet {
                         req.getParameter("status"),
                         req.getParameter("idproduto"),
                         req.getParameter("data_previsao"),
+                        req.getParameter("valor_adicional"),
                         req.getParameter("observacao"));
 
                 req.setAttribute("mensagemSucesso", "<div id=\"foo\" class=\"alert alert-success\" role=\"alert\"> <strong> Encomenda registrada com sucesso! </strong> </div>"
@@ -74,6 +76,7 @@ public class Encomenda_Servlet extends HttpServlet {
                         req.getParameter("status"),
                         req.getParameter("idproduto"),
                         req.getParameter("data_previsao"),
+                        req.getParameter("valor_adicional"),
                         req.getParameter("observacao"));
                 req.setAttribute("mensagemSucesso", "<div id=\"foo\" class=\"alert alert-success\" role=\"alert\"> <strong> Encomenda alterada com Sucesso! </strong> </div>"
                         + "<script>$().ready(function() {\n"
@@ -195,13 +198,13 @@ public class Encomenda_Servlet extends HttpServlet {
                     + "                </script>\n"
                     + "");
         }
-
+        
         req.getRequestDispatcher("gestao/encomendas.jsp").forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         
+    
         try {  
              req.setAttribute("solicitada", encomendabo.getSolicitada());
          }

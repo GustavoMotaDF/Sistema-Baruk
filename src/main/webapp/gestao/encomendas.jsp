@@ -10,17 +10,9 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Sidebar 07</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="gestao/menu/css/style.css">
-        <link href="gestao/menu/css/select2.css" rel="stylesheet" >
-        <script src="gestao/menu/js/jquery-3.3.1.slim.min.js"></script>
-
+        <title>Encomendas</title>
+        <jsp:include page="menu/imports/head.jsp"/>
+       
     </head>
     <body>
 
@@ -80,19 +72,31 @@
                                 <select class="form-control procc" required name="idproduto">
                                     <option value=" ">Selecione ...</option>
                                     <c:forEach var="produtos" items="${produtos}">                             
-                                        <option value="${produtos.idproduto}">${produtos.produto}</option>
+                                        <option value="${produtos.idproduto}">
+                                            Produto: ${produtos.produto} ------
+                                            Valor: R$${produtos.valor}0
+                                        </option>
                                     </c:forEach>
                                 </select>
                                 <br>
                                 <br>
+                                Valor adicional? :
+                                 <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">R$</div>
+                                                    <input type="text" name="valor_adicinal" class=" valores form-control" maxlength="9" required placeholder="Valor adicional"/>
+                                                </div>
+                                            </div>
 
+                                <br>
+                                <br>
                                 Data previsão da entrega:
-                                <input type="date" name="data_previsao" required class="form-control" required />
+                                <input type="date" name="data_previsao" required class="form-control" />
                                 <br>
                                 Observação:
                                 <br>
                                 <textarea name="observacao" required class="form-control" ></textarea>                    
-
+                                
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -152,7 +156,16 @@
                                 </select>
                                 <br>
                                 <br>
+                                Valor adicional? :
+                                <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">R$</div>
+                                                    <input type="text" name="valor_adicinal" class=" valores form-control" maxlength="9" value="${encomendaEditando.valor_adicional}" required placeholder="Valor adicional"/>
+                                                </div>
+                                            </div>
 
+                                <br>
+                                <br>
                                 Data previsão da entrega:
                                 <input type="date" name="data_previsao" value="${encomendaEditando.data_previsao}" class="form-control" required />
                                 <br>
@@ -172,7 +185,7 @@
                                 </div>                    
                             </c:if>
                         </form>
-
+                            
                         <br>
                         <br>
 
@@ -225,10 +238,7 @@
             });
         </script>
 
-        <script src="gestao/menu/js/select2.js"></script>
-
-        <script src="gestao/menu/js/popper.js"></script>
-        <script src="gestao/menu/js/bootstrap.min.js"></script>
-        <script src="gestao/menu/js/main.js"></script>
+        
+        <jsp:include page="menu/imports/fim.jsp"/>
     </body>
 </html>

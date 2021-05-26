@@ -11,14 +11,9 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Sidebar 07</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Clientes</title>
+                <jsp:include page="menu/imports/head.jsp"/>
 
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="gestao/menu/css/style.css">
     </head>
     <body>
 
@@ -65,11 +60,12 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     Telefone:
-                                                    <input type="text" name="telefone" class="form-control" required placeholder="Telefone"/>
+                                                    <input type="text" id="telefone" class="form-control" name="telefone" required placeholder="Telefone" onkeypress="mask(this, mtell);" onblur="mask(this, mtell);" />
+
                                                 </div>
                                                 <div class="col-md-6">
                                                     CPF:
-                                                    <input type="text" name="cpf" class="form-control" required placeholder=" CPF"/>
+                                                    <input id="cpf" class="form-control" type="text" name="cpf" onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc(this, mCPF);"> <span id="cpfResponse"></span>
                                                 </div>
                                             </div>
                                             <br>
@@ -103,17 +99,17 @@
                                 <c:forEach var="clientes" items="${clientes}">
                                     <ul class="list-group">                                        
                                         <li class="list-group-item">
-                                            <button type="button" class="btn btn-secundary form-control" data-toggle="modal" data-target="#a${clientes.cpf}">${clientes.nome}</button>
+                                            <button type="button" class="btn btn-secundary form-control" data-toggle="modal" data-target="#baruk${clientes.idcliente}">${clientes.nome}</button>
                                         </li>                                        
                                     </ul>
                                     <!-- Large modal -->
                                     <br>
 
-                                    <div class="modal fade bd-example-modal-lg" id="a${clientes.cpf}" tabindex="-1" role="dialog" aria-labelledby="#a${clientes.cpf}" aria-hidden="true">
+                                    <div class="modal fade bd-example-modal-lg" id="baruk${clientes.idcliente}" tabindex="-1" role="dialog" aria-labelledby="#baruk${clientes.idcliente}" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="a${clientes.cpf}">${clientes.nome}</h5>
+                                                    <h5 class="modal-title" id="baruk${clientes.idcliente}">${clientes.nome}</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -149,11 +145,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         Telefone:
-                                        <input type="text" name="telefone" value="${clienteEditando.telefone}" class="form-control" required placeholder="Telefone"/>
+                                        <input type="text" class="form-control" id="telefone" name="telefone" value="${clienteEditando.telefone}" required placeholder="Telefone" onkeypress="mask(this, mtell);" onblur="mask(this, mtell);" />
                                     </div>
                                     <div class="col-md-6">
-                                        CPF:
-                                        <input type="text" name="cpf" value="${clienteEditando.cpf}" class="form-control" required placeholder=" CPF"/>
+                                        CPF: <span id="cpfResponse"></span>
+                                        <input id="cpf" class="form-control" value="${clienteEditando.cpf}" type="text" name="cpf" onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc(this, mCPF);"> 
+
                                     </div>
                                 </div>
                                 <br>
@@ -177,10 +174,6 @@
 
             </div>
         </div>
-
-        <script src="gestao/menu/js/jquery.min.js"></script>
-        <script src="gestao/menu/js/popper.js"></script>
-        <script src="gestao/menu/js/bootstrap.min.js"></script>
-        <script src="gestao/menu/js/main.js"></script>
+        <jsp:include page="menu/imports/fim.jsp"/>
     </body>
 </html>

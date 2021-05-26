@@ -10,17 +10,10 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Sidebar 07</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="gestao/menu/css/style.css">
+        <title>Produto</title>
+        <jsp:include page="menu/imports/head.jsp"/>
     </head>
     <body>
-
         <div class="wrapper d-flex align-items-stretch">
             <!-- IMPORTAR MENU LATERAL-->
             <jsp:include page="menu/menu-lateral.jsp"/>
@@ -55,7 +48,7 @@
                                     </div>
                                     <form action="${pageContext.request.contextPath}/Produto"  method="post">
                                         Produto: 
-                                        <input type="text" name="produto" class="form-control" required placeholder="Produto:"/>
+                                        <input type="text" name="produto" class="form-control" maxlength="100" required placeholder="Produto:"/>
                                         <br>
                                         Descricao:
                                         <input type="text" name="descricao" class="form-control" required placeholder="Descricao"/>
@@ -63,11 +56,27 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 Valor:
-                                                <input type="text" name="valor" class="form-control" required placeholder="Valor"/>
+                                                <div class="col-auto">                                                    
+                                                    <div class="input-group mb-2">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">R$</div>                                                            
+                                                            <input type="text" name="valor" class="valores form-control" maxlength="9" required placeholder="Valor"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                             </div>
                                             <div class="col-md-6">
                                                 Tempo de produção:
-                                                <input type="text" name="tproducao" class="form-control" required placeholder=" Tempo de producao"/>
+                                                <div class="col-auto">                                                    
+                                                    <div class="input-group mb-2">
+                                                        <div class="input-group-prepend">
+                                                            <input type="text" name="tproducao" class="form-control" required placeholder=" Tempo de producao" maxlength="3"/>
+                                                            <div class="input-group-text">Dias</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <br>
@@ -148,11 +157,25 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         Valor:
-                                        <input type="text" name="valor" class="form-control" value="${produtoEditando.valor}" required placeholder="Valor"/>
+                                        <div class="col-auto">                                                    
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">R$</div>
+                                                    <input type="text" name="valor" class="valores form-control" value="${produtoEditando.valor}" maxlength="9" required placeholder="Valor"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         Tempo de produção:
-                                        <input type="text" name="tproducao" class="form-control" value="${produtoEditando.tproducao}" required placeholder=" Tempo de producao"/>
+                                        <div class="col-auto">                                                    
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <input type="text" name="tproducao" class="form-control" value="${produtoEditando.tproducao}" required placeholder=" Tempo de producao" maxlength="3"/>
+                                                    <div class="input-group-text">Dias</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <br>
@@ -171,22 +194,15 @@
                         <div class="container">
                             <form action="${pageContext.request.contextPath}/Produto" method="post">
 
-                            </form>   
-
-
+                            </form>
                         </div> 
-
                     </div>
-
                 </div>
-
-
             </div>
         </div>
 
-        <script src="gestao/menu/js/jquery.min.js"></script>
-        <script src="gestao/menu/js/popper.js"></script>
-        <script src="gestao/menu/js/bootstrap.min.js"></script>
-        <script src="gestao/menu/js/main.js"></script>
+       <!-- <script src="gestao/menu/js/jquery.min.js"></script> -->
+        <jsp:include page="menu/imports/fim.jsp"/>
+       
     </body>
 </html>
