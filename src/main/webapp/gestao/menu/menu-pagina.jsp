@@ -20,15 +20,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="${pageContext.request.contextPath}/Consulta-Encomenda">Consulta</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
+                
             </ul>
         </div>
     </div>

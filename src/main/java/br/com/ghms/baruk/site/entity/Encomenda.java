@@ -35,6 +35,7 @@ public class Encomenda implements Serializable{
     private LocalDate data_previsao;
     private String observacao;
     private BigDecimal valor_adicional;
+    @Column(unique=true)
     private String idpesquisa;
 
     public BigDecimal getValor_adicional() {

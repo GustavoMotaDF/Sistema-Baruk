@@ -25,7 +25,7 @@
                 <!-- IMPORTAR MENU PÁGINA--> 
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
-                <h2 class="mb-4">Sidebar #07</h2>
+                <h2 class="mb-4">Encomedas</h2>
                 <!-- CONTEUDO DE FATO-->
 
                 <div class="container">
@@ -74,7 +74,7 @@
                                     <c:forEach var="produtos" items="${produtos}">                             
                                         <option value="${produtos.idproduto}">
                                             Produto: ${produtos.produto} ------
-                                            Valor: R$${produtos.valor}0
+                                            Valor: R$${produtos.valor}
                                         </option>
                                     </c:forEach>
                                 </select>
@@ -84,7 +84,7 @@
                                  <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">R$</div>
-                                                    <input type="text" name="valor_adicinal" class=" valores form-control" maxlength="9" required placeholder="Valor adicional"/>
+                                                    <input type="text" name="valor_adicional" class=" valores form-control" maxlength="9" required placeholder="Valor adicional"/>
                                                 </div>
                                             </div>
 
@@ -151,7 +151,10 @@
                                     <option value="${encomendaEditando.produto.idproduto}">${encomendaEditando.produto.produto}</option>
                                     <option value=" ">Selecione ...</option>
                                     <c:forEach var="produtos" items="${produtos}">                             
-                                        <option value="${produtos.idproduto}">${produtos.produto}</option>
+                                       <option value="${produtos.idproduto}">
+                                            Produto: ${produtos.produto} ------
+                                            Valor: R$${produtos.valor}
+                                        </option>
                                     </c:forEach>
                                 </select>
                                 <br>
@@ -160,7 +163,7 @@
                                 <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">R$</div>
-                                                    <input type="text" name="valor_adicinal" class=" valores form-control" maxlength="9" value="${encomendaEditando.valor_adicional}" required placeholder="Valor adicional"/>
+                                                    <input type="text" name="valor_adicional" class=" valores form-control" maxlength="9" value="${encomendaEditando.valor_adicional}" required placeholder="Valor adicional"/>
                                                 </div>
                                             </div>
 

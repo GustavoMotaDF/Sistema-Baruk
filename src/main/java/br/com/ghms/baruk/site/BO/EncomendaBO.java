@@ -186,14 +186,12 @@ public class EncomendaBO {
             
             randonlimit = parsee.length() <= 4 ? parsee : parsee.substring(0, 4);
             randonlimit2 = parsee2.length() <= 4 ? parsee2 : parsee2.substring(0, 4);
-            System.out.println(randonlimit);
-            System.out.println(randonlimit2);
+            
            
        }       
         int randon3 = random.nextInt(9);        
         String idpesquisa = "BA" + randonlimit+randon3+randonlimit2+"RUK";
 
-        System.out.println(idpesquisa);
 
         encomenda.setIdpesquisa(idpesquisa);
 
@@ -268,8 +266,8 @@ public class EncomendaBO {
         em.clear();
         em.close();
 
-        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("")) {
-            throw new Exception("Sem Encomedas registradas!");
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("") || encomenda.size() < 1) {
+            throw new Exception("Sem Encomedas registradas com o codigo informado! <br>Caso isso seja um engano, entre em contato conosco informando o problema!<br>Nossas redes sociais estarão abaixo <3");
         }
 
         return encomenda;

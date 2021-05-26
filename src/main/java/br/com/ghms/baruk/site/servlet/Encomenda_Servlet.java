@@ -39,8 +39,9 @@ public class Encomenda_Servlet extends HttpServlet {
                         req.getParameter("status"),
                         req.getParameter("idproduto"),
                         req.getParameter("data_previsao"),
-                        req.getParameter("valor_adicional"),
-                        req.getParameter("observacao"));
+                       
+                        req.getParameter("observacao"),
+                        req.getParameter("valor_adicional"));
 
                 req.setAttribute("mensagemSucesso", "<div id=\"foo\" class=\"alert alert-success\" role=\"alert\"> <strong> Encomenda registrada com sucesso! </strong> </div>"
                         + "<script>$().ready(function() {\n"
@@ -76,8 +77,8 @@ public class Encomenda_Servlet extends HttpServlet {
                         req.getParameter("status"),
                         req.getParameter("idproduto"),
                         req.getParameter("data_previsao"),
-                        req.getParameter("valor_adicional"),
-                        req.getParameter("observacao"));
+                        req.getParameter("observacao"),
+                        req.getParameter("valor_adicional"));
                 req.setAttribute("mensagemSucesso", "<div id=\"foo\" class=\"alert alert-success\" role=\"alert\"> <strong> Encomenda alterada com Sucesso! </strong> </div>"
                         + "<script>$().ready(function() {\n"
                         + "	setTimeout(function () {\n"
@@ -204,7 +205,7 @@ public class Encomenda_Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    
+    //statusbo.InsercaoAuto();
         try {  
              req.setAttribute("solicitada", encomendabo.getSolicitada());
          }

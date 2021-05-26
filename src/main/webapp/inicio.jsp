@@ -10,8 +10,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Sidebar 07</title>
-        <meta charset="utf-8">
+        <title>Inicio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -30,7 +29,7 @@
                 <!-- IMPORTAR MENU PÁGINA--> 
                 <jsp:include page="gestao/menu/menu-pagina.jsp"/>
 
-                <h2 class="mb-4">Sidebar #07</h2>
+                <h2 class="mb-4">Inicio</h2>
                 <!-- CONTEUDO DE FATO-->
 
                 <div class="container">

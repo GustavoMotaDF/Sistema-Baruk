@@ -23,10 +23,12 @@
                 <!-- IMPORTAR MENU P?GINA--> 
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
-                <h2 class="mb-4">Sidebar #07</h2>
+                <h2 class="mb-4">Página de Consulta</h2>
                 <!-- CONTEUDO DE FATO-->
                 <c:if test="${ empty resultado}">
                     <div class="container">
+                         <h5> ${mensagemErro}
+                            ${mensagemSucesso}</h5>
                         <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
@@ -77,10 +79,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </c:if>
 
 

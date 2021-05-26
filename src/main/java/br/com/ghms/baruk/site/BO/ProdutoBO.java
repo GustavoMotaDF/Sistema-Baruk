@@ -52,9 +52,7 @@ public class ProdutoBO {
         Produto produtos = new Produto();
         produtos.setProduto(produto);
         produtos.setDescricao(descricao);
-        System.out.println(valor);
         BigDecimal valorok = new BigDecimal(valor);
-        System.out.println(valorok);
         produtos.setValor(valorok);
         produtos.setTproducao(tproducao);
         

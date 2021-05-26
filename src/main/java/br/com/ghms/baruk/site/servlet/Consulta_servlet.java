@@ -28,11 +28,11 @@ public class Consulta_servlet extends HttpServlet {
             try {
                 req.setAttribute("resultado", encomendabo.getEncomendaIdpesquisa(req.getParameter("idpesquisa")));
             } catch (Exception erro) {
-                req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> Erro ao tentar editar a Encomenda: " + erro.getMessage() + " caso não saiba o que fazer, procure o administrador do sistema!</strong></div>"
+                req.setAttribute("mensagemErro", "<div id=\"foo\" class=\"alert alert-warning\" role=\"alert\"><strong> " + erro.getMessage() + "</strong></div>"
                         + "<script>$().ready(function() {\n"
                         + "	setTimeout(function () {\n"
                         + "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n"
-                        + "	}, 10000); // O valor é representado em milisegundos.\n"
+                        + "	}, 50000); // O valor é representado em milisegundos.\n"
                         + "});</script>");
 
             }

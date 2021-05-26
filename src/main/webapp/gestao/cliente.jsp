@@ -26,7 +26,7 @@
                 <!-- IMPORTAR MENU PÁGINA-->
                 <jsp:include page="menu/menu-pagina.jsp"/>
 
-                <h2 class="mb-4">Sidebar #07</h2>
+                <h2 class="mb-4">Clientes</h2>
                 <!-- CONTEUDO DE FATO-->
 
                 <div class="container">

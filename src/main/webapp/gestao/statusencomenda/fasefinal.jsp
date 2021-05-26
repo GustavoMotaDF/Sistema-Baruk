@@ -13,22 +13,14 @@
             <tr>
                 <th>Cod. Encomenda</th>
                 <th>clientes</th>
-                <th>entrega</th>
-                <th>status</th>
-                <th>produto</th>                         
                 <th>data_previsao</th>  
-                <th>observacao></th>
 
             </tr>
             <c:forEach var="final" items="${final}">
                 <tr>
                     <td>${final.idpesquisa}</td>
                     <td>${final.cliente.nome}</td>
-                    <td>${final.entrega}</td>                                  
-                    <td>${final.status.nstatus}</td>                                  
-                    <td>${final.produto.produto}</td>
                     <td>${final.data_previsao}</td>
-                    <td>${final.observacao}</td>
                     <td><input type="radio" name="idencomenda" value="${final.idencomenda}"/></td>                            
                 </tr>
             </c:forEach>

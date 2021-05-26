@@ -15,22 +15,14 @@
             <tr>
                 <th>Cod. Encomenda</th>
                 <th>clientes</th>
-                <th>entrega</th>
-                <th>status</th>
-                <th>produto</th>                         
                 <th>data_previsao</th>  
-                <th>observacao></th>
 
             </tr>
             <c:forEach var="cancelada" items="${cancelada}">
                 <tr>
                     <td>${cancelada.idpesquisa}</td>
                     <td>${cancelada.cliente.nome}</td>
-                    <td>${cancelada.entrega}</td>                                  
-                    <td>${cancelada.status.nstatus}</td>                                  
-                    <td>${cancelada.produto.produto}</td>
                     <td>${cancelada.data_previsao}</td>
-                    <td>${cancelada.observacao}</td>
                     <td><input type="radio" name="idencomenda" value="${cancelada.idencomenda}"/></td>                            
                 </tr>
             </c:forEach>

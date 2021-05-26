@@ -60,7 +60,7 @@ public class ClienteBO {
         em.persist(cliente);
         }catch(PersistenceException erro){
            
-            throw new Exception("Entrada duplicada; o CPF ou o TELEFONE já está cadastrado no banco de dados!"+ erro.getCause().getMessage());
+            throw new Exception("Entrada duplicada; <br> o CPF já está cadastrado no banco de dados!");
             
         }
         
@@ -118,9 +118,7 @@ public class ClienteBO {
         return cliente;
     }
 
-    private void rollbackTransactionQuietly(EntityManager em) {
-        throw new UnsupportedOperationException("Entrada duplicada"); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
       

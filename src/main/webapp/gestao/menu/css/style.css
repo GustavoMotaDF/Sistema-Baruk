@@ -8134,7 +8134,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   font-family: "Poppins", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.8;
   font-weight: normal;
   background: #fafafa;
@@ -8215,7 +8215,7 @@ h1, h2, h3, h4, h5,
 #sidebar {
   min-width: 270px;
   max-width: 270px;
-  background: #3e64ff;
+  background: #8B4513;
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -8225,7 +8225,7 @@ h1, h2, h3, h4, h5,
     max-width: 80px;
     text-align: center; }
     #sidebar.active ul.components li {
-      font-size: 14px; }
+      font-size: 12px; }
       #sidebar.active ul.components li a {
         padding: 10px 0; }
         #sidebar.active ul.components li a span {

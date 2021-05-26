@@ -35,7 +35,7 @@
         <div class="limiter">
             <div class="container-login100" style="background-image: url('login/images/img-01.jpg');">
                 <div class="wrap-login100 p-t-190 p-b-30">
-                    <form class="login100-form validate-form" method="POST" action="inicio.jsp">
+                    <form class="login100-form validate-form" method="POST" action="${pageContext.request.contextPath}/Inicio">
                         <div class="login100-form-avatar">
                             <img src="" alt="">
                         </div>
