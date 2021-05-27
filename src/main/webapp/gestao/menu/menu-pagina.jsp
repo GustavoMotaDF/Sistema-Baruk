@@ -21,7 +21,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/Consulta-Encomenda">Consulta</a>
                 </li>
                  <li class="nav-item active">
-                     <a class="nav-link" href="Baruk-Site/gestao/menu/imports/sessao.jsp">Sair</a>
+                     <a class="nav-link" href="gestao/menu/imports/sessao.jsp">Sair</a>
                 </li>
             </ul>
         </div>
