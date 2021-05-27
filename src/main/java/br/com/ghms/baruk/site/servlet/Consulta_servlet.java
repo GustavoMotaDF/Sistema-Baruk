@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -24,7 +25,14 @@ public class Consulta_servlet extends HttpServlet {
     private final EncomendaBO encomendabo = new EncomendaBO();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       if (Objects.nonNull(req.getParameter("consultar"))) {
+      HttpSession sessao = req.getSession();
+        
+        String username = (String) sessao.getAttribute("username");
+
+        if (username == null || username.isEmpty()) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
+        if (Objects.nonNull(req.getParameter("consultar"))) {
             try {
                 req.setAttribute("resultado", encomendabo.getEncomendaIdpesquisa(req.getParameter("idpesquisa")));
             } catch (Exception erro) {
@@ -43,7 +51,14 @@ public class Consulta_servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                req.getRequestDispatcher("gestao/consulta_encomenda.jsp").forward(req, resp);
+              HttpSession sessao = req.getSession();
+        
+        String username = (String) sessao.getAttribute("username");
+
+        if (username == null || username.isEmpty()) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
+        req.getRequestDispatcher("gestao/consulta_encomenda.jsp").forward(req, resp);
     }
 
    

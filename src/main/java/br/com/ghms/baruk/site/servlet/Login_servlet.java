@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,7 +27,15 @@ public class Login_servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    if (Objects.nonNull(req.getParameter("cadastrar"))) {
+     HttpSession sessao = req.getSession();
+        
+        String username = (String) sessao.getAttribute("username");
+
+        if (username == null || username.isEmpty()) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
+        
+        if (Objects.nonNull(req.getParameter("cadastrar"))) {
             try {
                 loginbo.cadLogin(
                         req.getParameter("username"),
@@ -108,7 +117,14 @@ public class Login_servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-     try {
+      HttpSession sessao = req.getSession();
+        
+        String username = (String) sessao.getAttribute("username");
+
+        if (username == null || username.isEmpty()) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
+        try {
             req.setAttribute("login", loginbo.getLogins());
 
         } catch (Exception erro) {

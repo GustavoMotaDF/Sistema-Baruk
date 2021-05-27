@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +32,13 @@ public class Encomenda_Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       
+        HttpSession sessao = req.getSession();
+        
+        String username = (String) sessao.getAttribute("username");
+
+        if (username == null || username.isEmpty()) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
             try {
                 encomendabo.cadEncomenda(req.getParameter("idcliente"),
@@ -206,7 +213,15 @@ public class Encomenda_Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     //statusbo.InsercaoAuto();
-        try {  
+        HttpSession sessao = req.getSession();
+        
+        String username = (String) sessao.getAttribute("username");
+
+        if (username == null || username.isEmpty()) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
+    
+    try {  
              req.setAttribute("solicitada", encomendabo.getSolicitada());
          }
          catch(Exception erro){

@@ -6,84 +6,57 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <title>Login </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
-        <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="login/css/util.css">
-        <link rel="stylesheet" type="text/css" href="login/css/main.css">
-        <!--===============================================================================================-->
+        <meta charset="utf-8">
+        <title>Signin Template · Bootstrap v4.6</title>
+        <jsp:include page="gestao/menu/imports/head.jsp"/>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            .fonte{
+                font-family: 'Pattaya', sans-serif;
+            }
+            .fundo{
+                background-image: url("gestao/menu/images/fundoNeutro.jpeg");
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+
+
+        <!-- Custom styles for this template -->
+        <link href="gestao/menu/css/signin.css" rel="stylesheet">
     </head>
-    <body>
-
-        <div class="limiter">
-            <div class="container-login100" style="background-image: url('login/images/img-01.jpg');">
-                <div class="wrap-login100 p-t-190 p-b-30">
-                    <form class="login100-form validate-form" method="POST" action="${pageContext.request.contextPath}/Inicio">
-                        <div class="login100-form-avatar">
-                            <img src="" alt="">
-                        </div>
-
-                        <span class="login100-form-title p-t-20 p-b-45">
-                            Baruk
-                        </span>
-
-                        <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-                            <input class="input100" type="text" name="username" placeholder="Username">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user"></i>
-                            </span>
-                        </div>
-
-                        <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Password">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                        </div>
-
-                        <div class="container-login100-form-btn p-t-10">
-                            <button class="login100-form-btn">
-                                Login
-                            </button>
-                        </div>
-
-
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <!--===============================================================================================-->	
-        <script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="login/vendor/bootstrap/js/popper.js"></script>
-        <script src="login/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="login/vendor/select2/select2.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="login/js/main.js"></script>
-
+    <body class="text-center fundo">
+        <form class="form-signin" action="${pageContext.request.contextPath}/Inicio" method="post" >
+            <h1 class="h3 mb-3 font-weight-normal fonte">Baruk Art'Crô</h1>
+            <label for="inputEmail" class="sr-only">Login</label>
+            <input type="text" id="inputEmail" class="form-control" name="username" required autofocus onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc(this, mCPF);" placeholder="Login">
+            <br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Password" required>
+            
+            <input class="btn btn-lg btn-primary btn-block" name="Entrar" value="Entrar" type="submit" />
+             ${mensagemErro}
+            <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+        </form>
     </body>
 </html>

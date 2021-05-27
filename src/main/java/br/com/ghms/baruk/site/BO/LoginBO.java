@@ -115,4 +115,31 @@ public class LoginBO {
         }        
         return login;
     }
+    public List<Login> getLogin(String username, String senha) throws Exception {
+        List<Login> Login;
+        EntityManager em = emf.createEntityManager(); 
+        em.getTransaction().begin();
+         
+        Login = em.createNativeQuery("SELECT log.nome FROM tb_login log where log.cpf=:cpf and log.senha=:senha")
+                                .setParameter("cpf", username)
+                                .setParameter("senha", senha)
+                                .getResultList();
+
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+        
+        if(Login == null || Login.isEmpty()){
+          throw new Exception("Sem resultado");
+                    
+         }
+        
+        
+        
+        
+        return Login;
+        
+        
+
+    }
 }
