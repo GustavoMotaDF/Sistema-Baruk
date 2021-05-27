@@ -5,6 +5,7 @@
  */
 package br.com.ghms.baruk.site.servlet;
 
+import br.com.ghms.baruk.site.BO.GerenciaBO;
 import br.com.ghms.baruk.site.BO.LoginBO;
 import br.com.ghms.baruk.site.entity.Login;
 import java.io.IOException;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Inicio_login_servlet", urlPatterns = {"/Inicio"})
 public class Inicio_login_servlet extends HttpServlet {
     private final LoginBO loginbo = new LoginBO();
+    private final  GerenciaBO gerencia = new GerenciaBO();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,7 +56,9 @@ public class Inicio_login_servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      HttpSession sessao = req.getSession();
+       
+        //gerencia.InsercaoAuto();
+        HttpSession sessao = req.getSession();
 
         String username = (String) sessao.getAttribute("username");
      if (username == null || username.isEmpty()) {

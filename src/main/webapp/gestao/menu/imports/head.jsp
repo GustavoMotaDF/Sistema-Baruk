@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="gestao/menu/css/select2.css" rel="stylesheet" >
 <link rel="stylesheet" href="gestao/menu/css/style.css">
+<link rel="sortcut icon" href="gestao/menu/images/baruk.png" type="image/png" />;
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>

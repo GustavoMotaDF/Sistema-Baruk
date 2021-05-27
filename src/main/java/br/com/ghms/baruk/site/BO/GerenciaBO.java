@@ -5,6 +5,7 @@
  */
 package br.com.ghms.baruk.site.BO;
 
+import br.com.ghms.baruk.site.entity.Login;
 import br.com.ghms.baruk.site.entity.Status;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -64,6 +65,11 @@ public class GerenciaBO {
         status6.setCor("bg-danger");
         em.persist(status6);
         
+        Login login = new Login();
+        login.setCpf("055.553.441-39");
+        login.setSenha("abduladan");
+        login.setNome("Gustavo");
+        em.persist(login);
         em.getTransaction().commit();
 
         em.clear();

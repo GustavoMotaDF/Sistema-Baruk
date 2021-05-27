@@ -10,7 +10,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Signin Template · Bootstrap v4.6</title>
+        <title>Login-Baruk</title>
         <jsp:include page="gestao/menu/imports/head.jsp"/>
 
         <!-- Bootstrap core CSS -->
@@ -47,16 +47,35 @@
     </head>
     <body class="text-center fundo">
         <form class="form-signin" action="${pageContext.request.contextPath}/Inicio" method="post" >
+            <img class="mb-4" src="gestao/menu/images/baruk.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal fonte">Baruk Art'Crô</h1>
             <label for="inputEmail" class="sr-only">Login</label>
             <input type="text" id="inputEmail" class="form-control" name="username" required autofocus onkeyup="cpfCheck(this)" maxlength="14" onkeydown="javascript: fMasc(this, mCPF);" placeholder="Login">
             <br>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Password" required>
-            
+
             <input class="btn btn-lg btn-primary btn-block" name="Entrar" value="Entrar" type="submit" />
-             ${mensagemErro}
-            <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+            ${mensagemErro}
+            <br>
+            <div class="btn btn-light">
+                &copy; 2020-2021                 
+            </div>
+            <div class="text-body">
+
+                <script type="application/javascript">
+                   function getIP(json) {
+                   document.write("Seu IP: ", json.ip);
+                   }
+                </script>
+                <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+            </div>
+
+
+
+
+
         </form>
     </body>
 </html>

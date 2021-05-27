@@ -5,7 +5,9 @@
 --%>
 
 <nav id="sidebar" class="active">
+    <img class="mb-4" src="gestao/menu/images/baruk.png" alt="" width="72" height="72">
     <h1><a href="${pageContext.request.contextPath}/inicio.jsp" class="logo">B.</a></h1>
+    
     <ul class="list-unstyled components mb-5">
         <li class="active">
             <a href="${pageContext.request.contextPath}/inicio.jsp"><span class="fa fa-home"></span> Inicio</a>
@@ -36,7 +38,8 @@
         
         
     </ul>
-
+              <br>
+           
     <div class="footer">
         <p>
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>

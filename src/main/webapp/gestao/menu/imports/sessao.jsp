@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
    try{    
-    response.sendRedirect("/Baruk-Site/");      
+    response.sendRedirect("/");      
     session.invalidate();
     
    }catch(Exception e){
