@@ -30,13 +30,24 @@
 
                     <div class="container form-group ">
 
-                        <h2> ${mensagemErro}
-                            ${mensagemSucesso}</h2>
+                        <h5> ${mensagemErro}
+                            ${mensagemSucesso}</h5>
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#exampleModalLong">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </button>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#exampleModalLong">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5">
+                                <button type="button" class="btn btn-secondary form-control" data-toggle="modal" data-target="#exampleModalLong1">
+                                    Arquivados
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content container">
@@ -98,53 +109,102 @@
                         <br>
                         <br>
                         <br>
+                        <div class="modal fade bd-example-modal-lg" id="exampleModalLong1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content container">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle1">Arquivados</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="${pageContext.request.contextPath}/Produto"  method="post">
+                                        <table class="table table-hover table-sm">
+                                            <tr>
+                                                <th>Produto</th>
+                                                <th>Descricao</th>
+                                                <th>Valor</th>
+                                                <th>Tempo de produção</th>                         
+                                            </tr>
+                                            <c:forEach var="produtosarq" items="${produtosarq}">
+                                                <tr>
+                                                    <td>${produtosarq.produto}</td>
+                                                    <td>${produtosarq.descricao}</td>
+                                                    <td>${produtosarq.valor}</td>
+                                                    <td>${produtosarq.tproducao}</td>
+                                                    <td><input type="hidden" name="idproduto" value="${produtosarq.idproduto}"/></td> 
+                                                    <td><input class="btn btn-info" type="submit" name="ativar" value="Ativar"/></td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </form>
 
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
 
                         <form action="${pageContext.request.contextPath}/Produto"  method="post">
                             <c:if test="${ empty produtoEditando}">
-                                <c:forEach var="produtos" items="${produtos}">
-                                    <ul class="list-group">                                        
-                                        <li class="list-group-item">
-                                            <button type="button" class="btn btn-secundary form-control" data-toggle="modal" data-target="#a${produtos.idproduto}">${produtos.produto}</button>
-                                        </li>                                        
-                                    </ul>
+                                <div class="row">
+                                    <c:forEach var="produtos" items="${produtos}">
 
+                                        <div class="modal fade bd-example-modal-lg" id="a${produtos.idproduto}" tabindex="-1" role="dialog" aria-labelledby="#a${produtos.idproduto}" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="a${produtos.idproduto}">${produtos.produto}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="${pageContext.request.contextPath}/Produto"  method="post">
+                                                        <table class="table table-hover table-sm">
+                                                            <tr>
+                                                                <th>Produto</th>
+                                                                <th>Descricao</th>
+                                                                <th>Valor</th>
+                                                                <th>Tempo de produção</th>                         
+                                                            </tr>
 
-                                    <div class="modal fade bd-example-modal-lg" id="a${produtos.idproduto}" tabindex="-1" role="dialog" aria-labelledby="#a${produtos.idproduto}" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="a${produtos.idproduto}">${produtos.produto}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                                            <tr>
+                                                                <td>${produtos.produto}</td>
+                                                                <td>${produtos.descricao}</td>
+                                                                <td>${produtos.valor}</td>
+                                                                <td>${produtos.tproducao}</td>
+                                                                <td> <input type="hidden" name="idproduto" value="${produtos.idproduto}"/> </td>                    
+                                                            </tr>
+
+                                                        </table>
+                                                        <div class="container row">
+                                                            <div class="col-md-5"><input class="btn btn-info form-control" type="submit" name="editar" value="Editar"/></div>
+                                                            <div class="col-md-2"></div>
+                                                            <div class="col-md-5"><input class="btn btn-warning form-control" type="submit" name="excluir" value="Arquivar"/></div>
+                                                        </div>
+                                                        <br>
+                                                    </form>
+
                                                 </div>
-                                                <table class="table table-hover table-sm">
-                                                    <tr>
-                                                        <th>Produto</th>
-                                                        <th>Descricao</th>
-                                                        <th>Valor</th>
-                                                        <th>Tempo de produção</th>                         
-                                                    </tr>
-
-                                                    <tr>
-
-                                                        <td>${produtos.produto}</td>
-                                                        <td>${produtos.descricao}</td>
-                                                        <td>${produtos.valor}</td>
-                                                        <td>${produtos.tproducao}</td>
-                                                        <td><input type="radio" name="idproduto" required value="${produtos.idproduto}"/></td>                            
-                                                    </tr>
-
-                                                </table>
-                                                <input class="btn btn-info" type="submit" name="editar" value="editar"/>
                                             </div>
                                         </div>
-                                    </div>
 
 
 
-                                </c:forEach>
+                                        <div class="col-md-4">
+                                            <div class="card border-primary">
+                                                <div class="card-body ">
+                                                    <h5 class="card-title">${produtos.produto}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">R$${produtos.valor}</h6>
+                                                    <p class="card-text">${produtos.descricao}</p>
+                                                    <p class="card-text">${produtos.tproducao} Dias de produção.</p>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#a${produtos.idproduto}"><i class="fa fa-cog" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </c:forEach>
+                                </div>
+
                             </c:if> 
                             <c:if test="${ not empty produtoEditando}">
                                 <input type="hidden" name="idproduto" value="${produtoEditando.idproduto}"/>
@@ -181,7 +241,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="submit" name="cadastrar" class="form-control btn btn-success" value="Cadastrar"/>
+                                        <input type="submit" name="alterar" class="form-control btn btn-success" value="Alterar"/>
                                     </div>
 
                                     <div class="col-md-6">
@@ -191,11 +251,7 @@
 
                             </c:if>  
                         </form>
-                        <div class="container">
-                            <form action="${pageContext.request.contextPath}/Produto" method="post">
 
-                            </form>
-                        </div> 
                     </div>
                 </div>
             </div>

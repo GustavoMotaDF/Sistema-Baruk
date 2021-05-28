@@ -133,13 +133,8 @@ public class LoginBO {
           throw new Exception("Sem resultado");
                     
          }
-        
-        
-        
-        
         return Login;
-        
-        
 
     }
+    
 }

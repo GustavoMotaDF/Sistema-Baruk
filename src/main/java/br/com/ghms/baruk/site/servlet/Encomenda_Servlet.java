@@ -7,6 +7,7 @@ package br.com.ghms.baruk.site.servlet;
 
 import br.com.ghms.baruk.site.BO.ClienteBO;
 import br.com.ghms.baruk.site.BO.EncomendaBO;
+import br.com.ghms.baruk.site.BO.GerenciaBO;
 import br.com.ghms.baruk.site.BO.ProdutoBO;
 import br.com.ghms.baruk.site.BO.StatusBO;
 import java.io.IOException;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "Encomenda_Servlet", urlPatterns = {"/Encomenda"})
 public class Encomenda_Servlet extends HttpServlet {
+    private final  GerenciaBO gerencia = new GerenciaBO();
 
     private final EncomendaBO encomendabo = new EncomendaBO();
     private final ProdutoBO produtobo = new ProdutoBO();
@@ -213,6 +215,7 @@ public class Encomenda_Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     //statusbo.InsercaoAuto();
+   // gerencia.InsercaoAuto();
         HttpSession sessao = req.getSession();
         
         String username = (String) sessao.getAttribute("username");

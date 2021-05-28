@@ -92,7 +92,61 @@ public class Produto_Servlet extends HttpServlet {
                         + "});</script>");
             }
 
-        }
+        }else if (Objects.nonNull(req.getParameter("excluir"))) {
+                try {
+                    produtobo.excluirProduto(req.getParameter("idproduto"));
+                    req.setAttribute("mensagemSucesso", "<div id=\"foo\"  class=\"alert alert-success\" role=\"alert\">Produto Arquivado com Sucesso</div>"
+                            + "<script>\n"
+                            + "                    $().ready(function () {\n"
+                            + "                        setTimeout(function () {\n"
+                            + "                            $('#foo').hide();\n"
+                            + "                        }, 10000);\n"
+                            + "                    });\n"
+                            + "                </script>\n"
+                            + "");
+
+                } catch (Exception erro) {
+                    req.setAttribute("mensagemErro", "<div id=\"foo\"  class=\"alert alert-warning\" role=\"alert\">" + erro.getMessage() + "</div>"
+                            + "<script>\n"
+                            + "                    $().ready(function () {\n"
+                            + "                        setTimeout(function () {\n"
+                            + "                            $('#foo').hide();\n"
+                            + "                        }, 10000);\n"
+                            + "                    });\n"
+                            + "                </script>\n"
+                            + "");
+
+                }                
+
+            }
+        else if (Objects.nonNull(req.getParameter("ativar"))) {
+                try {
+                    produtobo.AtivarProduto(req.getParameter("idproduto"));
+                    req.setAttribute("mensagemSucesso", "<div id=\"foo\"  class=\"alert alert-success\" role=\"alert\">Produto Ativado com Sucesso</div>"
+                            + "<script>\n"
+                            + "                    $().ready(function () {\n"
+                            + "                        setTimeout(function () {\n"
+                            + "                            $('#foo').hide();\n"
+                            + "                        }, 10000);\n"
+                            + "                    });\n"
+                            + "                </script>\n"
+                            + "");
+
+                } catch (Exception erro) {
+                    req.setAttribute("mensagemErro", "<div id=\"foo\"  class=\"alert alert-warning\" role=\"alert\">" + erro.getCause().getMessage() + "</div>"
+                            + "<script>\n"
+                            + "                    $().ready(function () {\n"
+                            + "                        setTimeout(function () {\n"
+                            + "                            $('#foo').hide();\n"
+                            + "                        }, 10000);\n"
+                            + "                    });\n"
+                            + "                </script>\n"
+                            + "");
+
+                }                
+
+            }
+        
         try {
             req.setAttribute("produtos", produtobo.getProdutos());
 
@@ -106,6 +160,12 @@ public class Produto_Servlet extends HttpServlet {
                     + "                    });\n"
                     + "                </script>\n"
                     + "");
+        }
+        try {
+            req.setAttribute("produtosarq", produtobo.getProdutosarq());
+
+        } catch (Exception erro) {
+           
         }
         req.getRequestDispatcher("gestao/produto.jsp").forward(req, resp);
     }
@@ -119,7 +179,7 @@ public class Produto_Servlet extends HttpServlet {
         if (username == null || username.isEmpty()) {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         }
-        try {
+         try {
             req.setAttribute("produtos", produtobo.getProdutos());
 
         } catch (Exception erro) {
@@ -132,6 +192,12 @@ public class Produto_Servlet extends HttpServlet {
                     + "                    });\n"
                     + "                </script>\n"
                     + "");
+        }
+        try {
+            req.setAttribute("produtosarq", produtobo.getProdutosarq());
+
+        } catch (Exception erro) {
+            
         }
         req.getRequestDispatcher("gestao/produto.jsp").forward(req, resp);
     }

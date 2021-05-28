@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.SQLDelete;
 
 /**
  *
@@ -22,6 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tb_produto")
+@SQLDelete(sql = "update tb_produto set ativo = 0 where idproduto = ?")
 public class Produto implements Serializable {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +32,16 @@ public class Produto implements Serializable {
     private String descricao;
     private BigDecimal valor;
     private String tproducao;
+    private Boolean ativo;
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }   
+    
     
     
     @OneToMany(mappedBy = "produto")

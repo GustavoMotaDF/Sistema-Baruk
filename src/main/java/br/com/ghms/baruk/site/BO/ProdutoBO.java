@@ -6,6 +6,7 @@
 package br.com.ghms.baruk.site.BO;
 
 import br.com.ghms.baruk.site.entity.Encomenda;
+import br.com.ghms.baruk.site.entity.Login;
 import br.com.ghms.baruk.site.entity.Produto;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,7 +29,22 @@ public class ProdutoBO {
         List<Produto> produto;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        produto = em.createQuery("from Produto").getResultList();
+        produto = em.createQuery("from Produto where ativo = 1").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        if (produto == null || produto.isEmpty() || produto.equals("")) {
+            throw new Exception("Sem Produto registrados!");
+        }
+
+        return produto;
+    }
+    public List<Produto> getProdutosarq() throws Exception {
+        List<Produto> produto;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        produto = em.createQuery("from Produto where ativo = 0").getResultList();
         em.getTransaction().commit();
         em.clear();
         em.close();
@@ -55,6 +72,7 @@ public class ProdutoBO {
         BigDecimal valorok = new BigDecimal(valor);
         produtos.setValor(valorok);
         produtos.setTproducao(tproducao);
+        produtos.setAtivo(Boolean.TRUE);
         
         em.persist(produtos);
         em.getTransaction().commit();
@@ -81,7 +99,7 @@ public class ProdutoBO {
         produtos.setValor(valorok);
         produtos.setTproducao(tproducao);
 
-        em.persist(produtos);
+        em.merge(produtos);
         em.getTransaction().commit();
 
         em.clear();
@@ -103,4 +121,68 @@ public class ProdutoBO {
         }        
         return produto;
     }
+    
+    public Boolean excluirProduto(String idproduto)throws Exception{
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        if(idproduto==null || idproduto.isEmpty() || idproduto.equals("") ){
+            throw new Exception("Erro ao desativar Produto, id não foi informado");            
+        }
+        
+        Produto produto = em.getReference(Produto.class, Long.valueOf(idproduto));
+        em.remove(produto);
+        
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+         
+        return true;
+        
+    }
+    public List<Login> getLogin(String username, String senha) throws Exception {
+        List<Login> Login;
+        EntityManager em = emf.createEntityManager(); 
+        em.getTransaction().begin();
+         
+        Login = em.createNativeQuery("SELECT log.nome FROM tb_login log where log.cpf=:cpf and log.senha=:senha")
+                                .setParameter("cpf", username)
+                                .setParameter("senha", senha)
+                                .getResultList();
+
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+        
+        if(Login == null || Login.isEmpty()){
+          throw new Exception("Sem resultado");
+                    
+         }
+        
+        
+        
+        
+        return Login;
+        
+        
+
+    }
+    public void AtivarProduto(String idproduto) throws Exception {
+        EntityManager em = emf.createEntityManager();
+        
+        if (idproduto == null || idproduto.isEmpty() || idproduto.equals("")) {
+            throw new Exception("Não foi informado o nome do Produto!");
+        }
+        em.getTransaction().begin();
+        Produto produtos = em.find(Produto.class, Long.valueOf(idproduto));       
+        produtos.setAtivo(Boolean.TRUE);
+
+        em.merge(produtos);
+        em.getTransaction().commit();
+
+        em.clear();
+        em.close();
+
+    }
+    
 }

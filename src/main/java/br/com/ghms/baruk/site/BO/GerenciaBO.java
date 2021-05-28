@@ -65,12 +65,12 @@ public class GerenciaBO {
         status6.setCor("bg-danger");
         em.persist(status6);
         
-        Login login = new Login();
-        login.setCpf("055.553.441-39");
-        login.setSenha("abduladan");
-        login.setNome("Gustavo");
-        em.persist(login);
-        em.getTransaction().commit();
+        //Login login = new Login();
+        //login.setCpf("055.553.441-39");
+       // login.setSenha("abduladan");
+        //login.setNome("Gustavo");
+        //em.persist(login);
+        //em.getTransaction().commit();
 
         em.clear();
         

@@ -56,6 +56,7 @@ public class ClienteBO {
         cliente.setEndereco(endereco);
         cliente.setData_cadastro(LocalDateTime.now());
         
+        
         em.getTransaction().begin(); 
         em.persist(cliente);
         }catch(PersistenceException erro){
