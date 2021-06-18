@@ -272,5 +272,9 @@ public class EncomendaBO {
 
         return encomenda;
     }
-
+    //query para qtd de encomendas por produto e valor ganho
+    //select distinctrow  p.idproduto, p.produto, sum(p.valor), count(distinct  e.idencomenda) as qtd from tb_encomenda e join tb_produto p on e.idproduto=p.idproduto group by e.idproduto;
+    
+    //query para qtd de encomendas por produto e valor ganho com filtro de status
+    //select distinctrow  p.idproduto, p.produto, sum(p.valor), count(distinct  e.idencomenda) as qtd, s.nstatus  from tb_encomenda e join tb_produto p on e.idproduto=p.idproduto join tb_status s on s.idstatus=e.idstatus where e.idstatus=2 group by e.idproduto ;
 }

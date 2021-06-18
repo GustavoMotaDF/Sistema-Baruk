@@ -109,6 +109,7 @@
                         <br>
                         <br>
                         <br>
+
                         <div class="modal fade bd-example-modal-lg" id="exampleModalLong1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content container">
@@ -119,6 +120,9 @@
                                         </button>
                                     </div>
                                     <form action="${pageContext.request.contextPath}/Produto"  method="post">
+                                         <div class="container row">
+                                            <div class="col-md-5"><input class="btn btn-info" type="submit" name="ativar" value="Ativar"/></div>
+                                        </div>
                                         <table class="table table-hover table-sm">
                                             <tr>
                                                 <th>Produto</th>
@@ -132,81 +136,84 @@
                                                     <td>${produtosarq.descricao}</td>
                                                     <td>${produtosarq.valor}</td>
                                                     <td>${produtosarq.tproducao}</td>
-                                                    <td><input type="hidden" name="idproduto" value="${produtosarq.idproduto}"/></td> 
-                                                    <td><input class="btn btn-info" type="submit" name="ativar" value="Ativar"/></td>
+                                                    <td><input type="radio" name="idproduto" required value="${produtosarq.idproduto}"/></td>                                                     
+                                                    
                                                 </tr>
                                             </c:forEach>
+                                            
                                         </table>
+                                        <div class="container row">
+                                            <div class="col-md-5"><input class="btn btn-info" type="submit" name="ativar" value="Ativar"/></div>
+                                        </div>
                                     </form>
-
                                     <br>
                                 </div>
                             </div>
                         </div>
+                        <c:if test="${ empty produtoEditando}">
+                            <div class="row">
+                                <c:forEach var="produtos" items="${produtos}">
+                                    <div class="modal fade bd-example-modal-lg" id="a${produtos.idproduto}" tabindex="-1" role="dialog" aria-labelledby="#a${produtos.idproduto}" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="a${produtos.idproduto}">${produtos.produto}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="${pageContext.request.contextPath}/Produto"  method="post">
+                                                    <table class="table table-hover table-sm">
+                                                        <tr>
+                                                            <th>Produto</th>
+                                                            <th>Descricao</th>
+                                                            <th>Valor</th>
+                                                            <th>Tempo de produção</th>                         
+                                                        </tr>
 
-                        <form action="${pageContext.request.contextPath}/Produto"  method="post">
-                            <c:if test="${ empty produtoEditando}">
-                                <div class="row">
-                                    <c:forEach var="produtos" items="${produtos}">
+                                                        <tr>
+                                                            <td>${produtos.produto}</td>
+                                                            <td>${produtos.descricao}</td>
+                                                            <td>${produtos.valor}</td>
+                                                            <td>${produtos.tproducao}</td>
+                                                            <td> <input type="hidden" name="idproduto" value="${produtos.idproduto}"/> </td>                    
+                                                        </tr>
 
-                                        <div class="modal fade bd-example-modal-lg" id="a${produtos.idproduto}" tabindex="-1" role="dialog" aria-labelledby="#a${produtos.idproduto}" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="a${produtos.idproduto}">${produtos.produto}</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                                    </table>
+                                                    <div class="container row">
+                                                        <div class="col-md-5"><input class="btn btn-info form-control" type="submit" name="editar" value="Editar"/></div>
+                                                        <div class="col-md-2"></div>
+                                                        <div class="col-md-5"><input class="btn btn-warning form-control" type="submit" name="excluir" value="Arquivar"/></div>
                                                     </div>
-                                                    <form action="${pageContext.request.contextPath}/Produto"  method="post">
-                                                        <table class="table table-hover table-sm">
-                                                            <tr>
-                                                                <th>Produto</th>
-                                                                <th>Descricao</th>
-                                                                <th>Valor</th>
-                                                                <th>Tempo de produção</th>                         
-                                                            </tr>
+                                                    <br>
+                                                </form>
 
-                                                            <tr>
-                                                                <td>${produtos.produto}</td>
-                                                                <td>${produtos.descricao}</td>
-                                                                <td>${produtos.valor}</td>
-                                                                <td>${produtos.tproducao}</td>
-                                                                <td> <input type="hidden" name="idproduto" value="${produtos.idproduto}"/> </td>                    
-                                                            </tr>
-
-                                                        </table>
-                                                        <div class="container row">
-                                                            <div class="col-md-5"><input class="btn btn-info form-control" type="submit" name="editar" value="Editar"/></div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="col-md-5"><input class="btn btn-warning form-control" type="submit" name="excluir" value="Arquivar"/></div>
-                                                        </div>
-                                                        <br>
-                                                    </form>
-
-                                                </div>
                                             </div>
                                         </div>
+                                    </div>
 
 
 
-                                        <div class="col-md-4">
-                                            <div class="card border-primary">
-                                                <div class="card-body ">
-                                                    <h5 class="card-title">${produtos.produto}</h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted">R$${produtos.valor}</h6>
-                                                    <p class="card-text">${produtos.descricao}</p>
-                                                    <p class="card-text">${produtos.tproducao} Dias de produção.</p>
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#a${produtos.idproduto}"><i class="fa fa-cog" aria-hidden="true"></i></button>
-                                                </div>
+                                    <div class="col-md-4">
+                                        <div class="card border-primary">
+                                            <div class="card-body ">
+                                                <h5 class="card-title">${produtos.produto}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">R$${produtos.valor}</h6>
+                                                <p class="card-text">${produtos.descricao}</p>
+                                                <p class="card-text">${produtos.tproducao} Dias de produção.</p>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#a${produtos.idproduto}"><i class="fa fa-cog" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
+                                    </div>
 
-                                    </c:forEach>
-                                </div>
+                                </c:forEach>
+                            </div>
 
-                            </c:if> 
-                            <c:if test="${ not empty produtoEditando}">
+                        </c:if> 
+
+                        <c:if test="${ not empty produtoEditando}">
+                            <form action="${pageContext.request.contextPath}/Produto"  method="post">                                
+
                                 <input type="hidden" name="idproduto" value="${produtoEditando.idproduto}"/>
                                 Produto: 
                                 <input type="text" name="produto" class="form-control" value="${produtoEditando.produto}" required placeholder="Produto:"/>
@@ -248,9 +255,9 @@
                                         <a href="${pageContext.request.contextPath}/Produto" class="form-control btn btn-warning">Cancelar</a><br>
                                     </div>
                                 </div>                 
+                            </form>
+                        </c:if>  
 
-                            </c:if>  
-                        </form>
 
                     </div>
                 </div>

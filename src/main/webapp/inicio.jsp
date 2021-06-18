@@ -7,16 +7,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!DOCTYPE html>
-<!doctype html>
+
 <html lang="en">
     <head>
         <title>Inicio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="gestao/menu/css/style.css">
+        <jsp:include page="gestao/menu/imports/head.jsp"/>
     </head>
     <body>
 
@@ -39,10 +34,7 @@
 
             </div>
         </div>
-
-        <script src="gestao/menu/js/jquery.min.js"></script>
-        <script src="gestao/menu/js/popper.js"></script>
-        <script src="gestao/menu/js/bootstrap.min.js"></script>
-        <script src="gestao/menu/js/main.js"></script>
+ <!-- <script src="gestao/menu/js/jquery.min.js"></script> -->
+        <jsp:include page="gestao/menu/imports/fim.jsp"/>
     </body>
 </html>

@@ -34,6 +34,7 @@ public class Produto_Servlet extends HttpServlet {
         if (username == null || username.isEmpty()) {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         }
+        
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
             try {
                 produtobo.cadProduto(

@@ -12,7 +12,7 @@
     <head>
         <title>Encomendas</title>
         <jsp:include page="menu/imports/head.jsp"/>
-       
+
     </head>
     <body>
 
@@ -81,12 +81,12 @@
                                 <br>
                                 <br>
                                 Valor adicional? :
-                                 <div class="input-group mb-2">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">R$</div>
-                                                    <input type="text" name="valor_adicional" class=" valores form-control" maxlength="9" required placeholder="Valor adicional"/>
-                                                </div>
-                                            </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">R$</div>
+                                        <input type="text" name="valor_adicional" value="0.00" class=" valores form-control" maxlength="9" placeholder="Valor adicional"/>
+                                    </div>
+                                </div>
 
                                 <br>
                                 <br>
@@ -96,7 +96,7 @@
                                 Observação:
                                 <br>
                                 <textarea name="observacao" required class="form-control" ></textarea>                    
-                                
+
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -151,7 +151,7 @@
                                     <option value="${encomendaEditando.produto.idproduto}">${encomendaEditando.produto.produto}</option>
                                     <option value=" ">Selecione ...</option>
                                     <c:forEach var="produtos" items="${produtos}">                             
-                                       <option value="${produtos.idproduto}">
+                                        <option value="${produtos.idproduto}">
                                             Produto: ${produtos.produto} ------
                                             Valor: R$${produtos.valor}
                                         </option>
@@ -161,11 +161,11 @@
                                 <br>
                                 Valor adicional? :
                                 <div class="input-group mb-2">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">R$</div>
-                                                    <input type="text" name="valor_adicional" class=" valores form-control" maxlength="9" value="${encomendaEditando.valor_adicional}" required placeholder="Valor adicional"/>
-                                                </div>
-                                            </div>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">R$</div>
+                                        <input type="text" name="valor_adicional" class=" valores form-control" maxlength="9" value="${encomendaEditando.valor_adicional}" placeholder="Valor adicional"/>
+                                    </div>
+                                </div>
 
                                 <br>
                                 <br>
@@ -188,7 +188,7 @@
                                 </div>                    
                             </c:if>
                         </form>
-                            
+
                         <br>
                         <br>
 
@@ -226,7 +226,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div> 
 
                 </div>
@@ -241,7 +240,7 @@
             });
         </script>
 
-        
+
         <jsp:include page="menu/imports/fim.jsp"/>
     </body>
 </html>

@@ -215,7 +215,7 @@ public class Encomenda_Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     //statusbo.InsercaoAuto();
-   // gerencia.InsercaoAuto();
+  // gerencia.InsercaoAuto();
         HttpSession sessao = req.getSession();
         
         String username = (String) sessao.getAttribute("username");

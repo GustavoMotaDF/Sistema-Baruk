@@ -72,7 +72,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">O que foi encomendado? <b>${resultado[0][5]}</b></h5>
                                 <p class="card-text"> Observação: <b>${resultado[0][3]}</b></p>
-                                <p class="card-text">Previsão de entrega: <b>${resultado[0][2]}</b></p>
+                                <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+                                <fmt:formatDate pattern="dd/MM/yyyy" value="${resultado[0][2]}" var="dataFormatada" />   
+                                <p class="card-text">Previsão de entrega: <b>${dataFormatada}</b></p>
                                 <p class="card-text">Entrega em domicílio? <b>${resultado[0][1]}</b></p>
 
 

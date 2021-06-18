@@ -28,6 +28,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="nav navbar-nav ml-auto">
+                <li>
+
+                    <div class="dropdown">
+                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Relatorios
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/Relatorio">Clientes</a>
+                            <a class="dropdown-item disabled"  href="#">Encomendas</a>
+                            <a class="dropdown-item"  href="${pageContext.request.contextPath}/Relatorio_Produto_Mais_Encomendados">Produtos mais encomendados</a>
+                            <a class="dropdown-item disabled"  href="#">Clientes com mais pedidos</a>
+                        </div>
+                    </div>
+
+                </li>
+
+
                 <li class="nav-item active">
                     <a class="nav-link" href="${pageContext.request.contextPath}/Consulta-Encomenda">Consulta</a>
                 </li>
