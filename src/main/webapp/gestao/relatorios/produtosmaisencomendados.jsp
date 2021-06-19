@@ -30,23 +30,23 @@
                 <!-- CONTEUDO DE FATO-->
                 <div class="container ">
                     <div class="container">                        
-                        <div>
-                            <table class="table table-hover">
-                                <tr>
-                                    <td>Impresso por <%
-                                        
-                                        %></td> 
-                                </tr>
-                            </table>
-                        </div>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
+                        
+                        <table class="table table-hover" id="lista">
+                            <thead>                                
+                                <tr>                                    
                                     <th scope="col">Produto</th>
-                                    <th scope="col">Quantidade de pedidos</th>
+                                    <th scope="col">Quantidade de pedidos<input class="form-control" type="hidden" id="filtro-nome"/></th>
                                     <th scope="col">Valor unitário</th>
                                     <th scope="col">Valor Total</th>
                                 </tr>
+                            <div>
+
+                                <br>
+                                <spam>Campo de busca por nome de produto.</spam>
+                                <br>
+                                <spam><i>Procure apenas com letra minuscula.</i></spam>
+                                <input class="form-control" id="filtro-nome" placeholder="Nome do Produto"/>
+                            </div>
                             </thead>
                             <tbody>
                                 <c:forEach var="produtomais" items="${produtomais}">
@@ -69,6 +69,6 @@
 
         <!-- <script src="gestao/menu/js/jquery.min.js"></script> -->
         <jsp:include page="../menu/imports/fim.jsp"/>
-        
+
     </body>
 </html>

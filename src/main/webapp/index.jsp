@@ -59,7 +59,7 @@
             ${mensagemErro}
             <br>
             <div class="btn btn-light">
-                &copy; 2020-2021                 
+               Baruk Art Cro &copy; 2020-2021                 
             </div>
             <div class="text-body">
 
@@ -71,9 +71,6 @@
                 <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 
             </div>
-
-
-
 
 
         </form>

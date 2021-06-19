@@ -35,6 +35,19 @@ public class RelatoriosBO {
         return encomenda;
     }
     
-    
-    
+    public List<Encomenda> getClientesPedidos() throws Exception {
+        List<Encomenda> encomenda;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        encomenda = em.createNativeQuery("SELECT distinctrow c.nome, c.cpf, c.telefone, c.endereco, count(distinctrow e.idencomenda) as qtd FROM tb_encomenda e join tb_cliente c on c.idcliente=e.idcliente group by c.idcliente order by qtd desc, c.nome;").getResultList();
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
+        if (encomenda == null || encomenda.isEmpty() || encomenda.equals("") || encomenda.size() < 1) {
+            throw new Exception("Sem produtos encomendados ainda   :(");
+        }
+
+        return encomenda;
+    }
 }
