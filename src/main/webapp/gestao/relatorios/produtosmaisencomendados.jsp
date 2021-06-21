@@ -46,6 +46,8 @@
                                 <br>
                                 <spam id="spaaam"><i>Procure apenas com letra minuscula.</i></spam>
                                 <input class="form-control" id="filtro-nome" placeholder="Nome do Produto"/>
+                                <br>
+                                 <br>
                             </div>
                             </thead>
                             <tbody>
