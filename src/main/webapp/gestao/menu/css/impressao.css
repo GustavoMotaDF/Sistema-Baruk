@@ -11,5 +11,5 @@ and open the template in the editor.
     body	{background: #FFF; color: #000; font: 12pt serif;}
 a:link, a:visited	{color: #333; text-decoration: underline;}
 nav, .priint {display: none;}
-#filtro-nome{display: none;}
+#filtro-nome, #spaaam{display: none;}
 }

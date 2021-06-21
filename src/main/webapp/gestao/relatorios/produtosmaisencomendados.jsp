@@ -42,9 +42,9 @@
                             <div>
 
                                 <br>
-                                <spam>Campo de busca por nome de produto.</spam>
+                                <spam id="spaaam">Campo de busca por nome de produto.</spam>
                                 <br>
-                                <spam><i>Procure apenas com letra minuscula.</i></spam>
+                                <spam id="spaaam"><i>Procure apenas com letra minuscula.</i></spam>
                                 <input class="form-control" id="filtro-nome" placeholder="Nome do Produto"/>
                             </div>
                             </thead>

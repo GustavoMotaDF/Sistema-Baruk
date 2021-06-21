@@ -35,7 +35,7 @@
                             Relatorios
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/Relatorio">Clientes</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/Relatorio_Qtd_Pedidos_Por_cliente">Qtd de Pedidos por Cliente</a>
                             <a class="dropdown-item disabled"  href="#">Encomendas</a>
                             <a class="dropdown-item"  href="${pageContext.request.contextPath}/Relatorio_Produto_Mais_Encomendados">Produtos mais encomendados</a>
                             <a class="dropdown-item disabled"  href="#">Clientes com mais pedidos</a>
